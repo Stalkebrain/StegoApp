@@ -2,12 +2,13 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Slider?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
-<?import javafx.scene.text.TextFlow?>
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.stego.stego.MainController">
    <Button layoutX="344.0" layoutY="660.0" mnemonicParsing="false" onAction="#downloadImage" prefHeight="33.0" prefWidth="151.0" text="Выберите изображение">
@@ -27,7 +28,13 @@
    <Button fx:id="buttonOk" layoutX="871.0" layoutY="728.0" mnemonicParsing="false" onAction="#stegoPlus" prefHeight="25.0" prefWidth="113.0" text="Ок" />
    <TextField fx:id="textField1" layoutX="813.0" layoutY="681.0" prefHeight="25.0" prefWidth="221.0" />
    <Slider fx:id="slider" blockIncrement="0.01" layoutX="811.0" layoutY="616.0" max="1.0" min="0.01" prefHeight="25.0" prefWidth="223.0" />
+   <Button fx:id="text" layoutX="847.0" layoutY="925.0" mnemonicParsing="false" onAction="#extractF" prefHeight="25.0" prefWidth="167.0" text="Вывести сообщение" />
+   <TextArea fx:id="Textflow" editable="false" layoutX="828.0" layoutY="793.0" prefHeight="99.0" prefWidth="205.0" styleClass="TextArea1" />
 
-   <TextFlow layoutX="836.0" layoutY="807.0" prefHeight="200.0" prefWidth="200.0" fx:id="Textflow"/>
-   <Button layoutX="848.0" layoutY="1013.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="167.0" text="Вывести сообщение" fx:id="text" onAction="#extractF"/>
+   <TableView fx:id="Table" layoutX="1149.0" layoutY="641.0" prefHeight="285.0" prefWidth="670.0">
+     <columns>
+     </columns>
+   </TableView>
+   <Button fx:id="buttonTable" layoutX="1447.0" layoutY="975.0" mnemonicParsing="false" onAction="#analysis" prefHeight="25.0" prefWidth="74.0" text="Таблица" />
+   <Slider fx:id="slider1" blockIncrement="1.0" layoutX="1373.0" layoutY="938.0" min="32.0" prefHeight="25.0" prefWidth="223.0" />
 </Pane>

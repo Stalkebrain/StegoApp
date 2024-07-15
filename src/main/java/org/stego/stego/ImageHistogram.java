@@ -24,6 +24,5 @@ public class ImageHistogram {
             }
         }
         return histogram;
-
     }
 }

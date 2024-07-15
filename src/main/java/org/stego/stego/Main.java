@@ -17,6 +17,7 @@ public class Main extends Application {
         Main.stage = stage;
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("mainview.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 1920, 1080);
+        scene.getStylesheets().add(getClass().getResource("styles.css").toExternalForm());
         stage.setTitle("Test");
         stage.setScene(scene);
         stage.show();
