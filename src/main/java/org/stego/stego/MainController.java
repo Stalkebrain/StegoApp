@@ -1,11 +1,12 @@
 package org.stego.stego;
 
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
+import javafx.scene.chart.BarChart;
 import javafx.scene.control.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
@@ -13,19 +14,16 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.text.Text;
-import javafx.scene.text.TextFlow;
 import javafx.stage.FileChooser;
 import javafx.embed.swing.SwingFXUtils;
+import javafx.stage.Stage;
 
-import java.awt.*;
 import java.awt.image.BufferedImage;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.Arrays;
 
-import static org.stego.stego.ImageHistogram.hisogramm;
+import static org.stego.stego.HistoView.hisogramm;
 
 public class MainController {
     @FXML
@@ -36,8 +34,6 @@ public class MainController {
     public ImageView Cock11;
     @FXML
     public Button visual;
-    @FXML
-    public Button histo;
     @FXML
     public Slider slider;
     @FXML
@@ -52,6 +48,8 @@ public class MainController {
     public TableView Table;
     @FXML
     public Slider slider1;
+    @FXML
+    private Button button3;
 
     int[] histogram;
     @FXML
@@ -66,22 +64,20 @@ public class MainController {
             Cock.setImage(image);
         }
         visual.setVisible(true);
-        histo.setVisible(true);
     }
     @FXML
     private void visualAttack(ActionEvent event) {
-        BufferedImage bufferedImage = SwingFXUtils.fromFXImage(Cock11.getImage(), null);
-        BufferedImage visualAttackImage = VisualAttack.visualizeLSB(bufferedImage);
-        Cock1.setImage(SwingFXUtils.toFXImage(visualAttackImage, null));
-    }
+        // Проверяем, есть ли изображение в Cock11
+        if (Cock11.getImage() != null) {
+            // Преобразуем изображение из ImageView в BufferedImage
+            BufferedImage bufferedImage = SwingFXUtils.fromFXImage(Cock11.getImage(), null);
 
-    @FXML
-    private void histoDisp(ActionEvent event) {
-        BufferedImage bufferedImage = SwingFXUtils.fromFXImage(Cock11.getImage(), null);
-        histogram=hisogramm(bufferedImage);
-        //System.out.println(Arrays.toString(histogram));
-        HistogramDisplay histogramDisplay = new HistogramDisplay();
-        histogramDisplay.displayHisto(histogram);
+            // Выполняем визуальную атаку
+            BufferedImage visualAttackImage = VisualAttack.visualizeLSB(bufferedImage);
+
+            // Устанавливаем результат в другой ImageView
+            Cock1.setImage(SwingFXUtils.toFXImage(visualAttackImage, null));
+        }
     }
 
     @FXML
@@ -125,5 +121,32 @@ public class MainController {
         Table.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
         Table.getColumns().setAll(partColumn, uniqueShadesColumn, chiSquaredColumn, pValueColumn);
     }
-}
+    @FXML
+    public void initialize() {
+        button3.setOnAction(event -> {
+            BufferedImage bufferedImage = SwingFXUtils.fromFXImage(Cock11.getImage(), null);
+            int[] histogram = ImageHistogram.hisogramm(bufferedImage);
+            if (histogram != null) {
+                try {
+                    showHistogramWindow(histogram);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+    }
 
+    private void showHistogramWindow(int[] histogram) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("histogramview.fxml"));
+        Stage stage = new Stage();
+
+        stage.setTitle("Гистограмма");
+        stage.setWidth(800);  // Шир// ина окна
+        stage.setHeight(600);
+
+        stage.setScene(new Scene(loader.load()));
+        HistogramController controller = loader.getController();
+        controller.displayHistogram(histogram);
+        stage.show();
+    }
+}

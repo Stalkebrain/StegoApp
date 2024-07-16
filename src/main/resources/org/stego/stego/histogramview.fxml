@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.chart.BarChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox fillWidth="true" spacing="10" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.stego.stego.HistogramController">
+    <children>
+        <BarChart fx:id="histogramChart" VBox.vgrow="ALWAYS">
+            <xAxis>
+                <CategoryAxis label="Оттенок" />
+            </xAxis>
+            <yAxis>
+                <NumberAxis label="Количество пикселей" />
+            </yAxis>
+        </BarChart>
+    </children>
+</VBox>
