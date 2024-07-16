@@ -3,11 +3,12 @@
 <?import javafx.scene.chart.BarChart?>
 <?import javafx.scene.chart.CategoryAxis?>
 <?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.layout.VBox?>
 
 <VBox fillWidth="true" spacing="10" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.stego.stego.HistogramController">
     <children>
-        <BarChart fx:id="histogramChart" VBox.vgrow="ALWAYS">
+        <BarChart fx:id="histogramChart" prefWidth="500.0" VBox.vgrow="ALWAYS">
             <xAxis>
                 <CategoryAxis label="Оттенок" />
             </xAxis>
@@ -15,5 +16,6 @@
                 <NumberAxis label="Количество пикселей" />
             </yAxis>
         </BarChart>
+      <Button mnemonicParsing="false" text="Сохранить" fx:id="button4" onAction="#handleSaveButtonAction"/>
     </children>
 </VBox>

@@ -11,6 +11,12 @@ import java.io.IOException;
 public class Main extends Application {
 
     private static Stage stage;
+    //public static ImageView Cock;
+    //public static ImageView Cock1;
+    //public static ImageView Cock11;
+
+    //проверять переменную при загрузки компонента
+    //если не пустая,то загрузить из переменной
 
     @Override
     public void start(Stage stage) throws IOException {

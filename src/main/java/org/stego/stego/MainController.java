@@ -141,8 +141,9 @@ public class MainController {
         Stage stage = new Stage();
 
         stage.setTitle("Гистограмма");
-        stage.setWidth(800);  // Шир// ина окна
-        stage.setHeight(600);
+        stage.setWidth(1920);  // Шир// ина окна
+        stage.setHeight(1080);
+        stage.setResizable(false);
 
         stage.setScene(new Scene(loader.load()));
         HistogramController controller = loader.getController();
