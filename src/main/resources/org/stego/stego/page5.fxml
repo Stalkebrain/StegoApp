@@ -12,14 +12,14 @@
    <children>
       <VBox alignment="CENTER" layoutX="144.0" layoutY="23.0" prefHeight="1025.0" prefWidth="1452.0" spacing="100.0">
          <children>
-            <TableView prefHeight="761.0" prefWidth="1452.0">
+            <TableView prefHeight="761.0" prefWidth="1452.0" fx:id="table">
               <columns>
                 <TableColumn prefWidth="75.0" text="C1" />
                 <TableColumn prefWidth="75.0" text="C2" />
               </columns>
             </TableView>
-            <Slider blockIncrement="1.0" min="1.0" />
-            <Button mnemonicParsing="false" text="Button" />
+            <Slider blockIncrement="1.0" min="1.0" fx:id="slider"/>
+            <Button mnemonicParsing="false" text="Button" fx:id="button"/>
          </children>
       </VBox>
    </children>
