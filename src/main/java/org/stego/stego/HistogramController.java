@@ -12,6 +12,11 @@ import java.io.File;
 import java.io.IOException;
 
 public class HistogramController {
+    public HistogramController(BarChart<String, Number> histogramChart) {
+        this.histogramChart = histogramChart;
+    }
+
+    public HistogramController(){}
 
     @FXML
     private BarChart<String, Number> histogramChart;

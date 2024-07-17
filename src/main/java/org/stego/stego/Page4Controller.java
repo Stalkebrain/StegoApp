@@ -25,10 +25,12 @@ public class Page4Controller {
     public Button button3;
 
     @FXML
-    public void initialize() {
+    public void initialize() throws IOException {
+        BufferedImage bufferedImage = SwingFXUtils.fromFXImage(imageTwo, null);
+        int[] histogram = ImageHistogram.hisogramm(bufferedImage);
+        showHistogramOnPane(histogram);
+
         button1.setOnAction(event -> {
-            BufferedImage bufferedImage = SwingFXUtils.fromFXImage(imageTwo, null);
-            int[] histogram = ImageHistogram.hisogramm(bufferedImage);
             if (histogram != null) {
                 try {
                     showHistogramWindow(histogram);
@@ -50,6 +52,12 @@ public class Page4Controller {
         HistogramController controller = loader.getController();
         controller.displayHistogram(histogram);
         stage.show();
+
+    }
+
+    private void showHistogramOnPane(int[] histogram) throws IOException {
+        HistogramController controller = new HistogramController(barChar);
+        controller.displayHistogram(histogram);
 
     }
 }
