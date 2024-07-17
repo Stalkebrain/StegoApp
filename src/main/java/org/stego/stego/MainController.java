@@ -14,6 +14,8 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.stage.Stage;
@@ -24,130 +26,133 @@ import java.io.File;
 import java.io.IOException;
 
 import static org.stego.stego.HistoView.hisogramm;
+import static org.stego.stego.Main.imageOne;
+import static org.stego.stego.Main.imageTwo;
 
 public class MainController {
     @FXML
-    public ImageView Cock;
+    public Pane paneTwo;
     @FXML
-    public ImageView Cock1;
+    private Button chooseImg;
     @FXML
-    public ImageView Cock11;
+    private Button addStego;
     @FXML
-    public Button visual;
+    private Button visualAttack;
     @FXML
-    public Slider slider;
+    private Button showHistogram;
     @FXML
-    public Button buttonOk;
-    @FXML
-    public TextField textField1;
-    @FXML
-    public TextArea Textflow;
-    @FXML
-    public Button buttonTable;
-    @FXML
-    public TableView Table;
-    @FXML
-    public Slider slider1;
-    @FXML
-    private Button button3;
+    private Button tableXi;
 
     int[] histogram;
-    @FXML
-    private void downloadImage(ActionEvent event) {
-        FileChooser fileChooser = new FileChooser();
-        fileChooser.setTitle("Выберите изображение");
-        fileChooser.getExtensionFilters().addAll(
-                new FileChooser.ExtensionFilter("Image Files", "*.bmp"));
-        File selectedFile = fileChooser.showOpenDialog(((Button) event.getSource()).getScene().getWindow());
-        if (selectedFile != null) {
-            Image image = new Image(selectedFile.toURI().toString());
-            Cock.setImage(image);
-        }
-        visual.setVisible(true);
-    }
-    @FXML
-    private void visualAttack(ActionEvent event) {
-        // Проверяем, есть ли изображение в Cock11
-        if (Cock11.getImage() != null) {
-            // Преобразуем изображение из ImageView в BufferedImage
-            BufferedImage bufferedImage = SwingFXUtils.fromFXImage(Cock11.getImage(), null);
+    FXMLLoader loader;
 
-            // Выполняем визуальную атаку
-            BufferedImage visualAttackImage = VisualAttack.visualizeLSB(bufferedImage);
 
-            // Устанавливаем результат в другой ImageView
-            Cock1.setImage(SwingFXUtils.toFXImage(visualAttackImage, null));
-        }
-    }
+//    @FXML
+//    private void analysis(ActionEvent event) throws IOException {
+//        BufferedImage bufferedImage = SwingFXUtils.fromFXImage(Cock11.getImage(), null);
+//        int sliderValue1 = (int) this.slider1.getValue();
+//        ImageAnalysis.Data[] dataArray = ImageAnalysis.AnalisisImage(bufferedImage,sliderValue1);
+//
+//        ObservableList<ImageAnalysis.Data> data = FXCollections.observableArrayList(dataArray);
+//
+//        TableColumn<ImageAnalysis.Data, Integer> partColumn = new TableColumn<>("Часть");
+//        partColumn.setCellValueFactory(new PropertyValueFactory<>("part"));
+//
+//        TableColumn<ImageAnalysis.Data, Integer> uniqueShadesColumn = new TableColumn<>("Степень свободы");
+//        uniqueShadesColumn.setCellValueFactory(new PropertyValueFactory<>("uniqueShades"));
+//
+//        TableColumn<ImageAnalysis.Data, Double> chiSquaredColumn = new TableColumn<>("Хи-квадрат");
+//        chiSquaredColumn.setCellValueFactory(new PropertyValueFactory<>("chiSquared"));
+//
+//        TableColumn<ImageAnalysis.Data, Double> pValueColumn = new TableColumn<>("P-значение");
+//        pValueColumn.setCellValueFactory(new PropertyValueFactory<>("pValue"));
+//
+//        Table.setItems(data);
+//        Table.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
+//        Table.getColumns().setAll(partColumn, uniqueShadesColumn, chiSquaredColumn, pValueColumn);
+//    }
 
-    @FXML
-    private void stegoPlus(ActionEvent event) {
-        BufferedImage bufferedImage = SwingFXUtils.fromFXImage(Cock.getImage(), null);
-        float slider = (float) this.slider.getValue();
-        String textf = textField1.getText();
-        Cock11.setImage(SwingFXUtils.toFXImage(FullImageSteganography.stegoPlusF(bufferedImage, textf, slider), null));
-    }
-    @FXML
-    private void extractF(ActionEvent event) {
-        BufferedImage bufferedImage = SwingFXUtils.fromFXImage(Cock11.getImage(), null);
-        float sliderValue = (float) this.slider.getValue();
-        String extractedText = FullImageSteganography.extractFM(bufferedImage, sliderValue);
 
-        // Очистка текущего текста и добавление нового
-        Textflow.clear();
-        Textflow.setText(extractedText);
-    }
-    @FXML
-    private void analysis(ActionEvent event) throws IOException {
-        BufferedImage bufferedImage = SwingFXUtils.fromFXImage(Cock11.getImage(), null);
-        int sliderValue1 = (int) this.slider1.getValue();
-        ImageAnalysis.Data[] dataArray = ImageAnalysis.AnalisisImage(bufferedImage,sliderValue1);
-
-        ObservableList<ImageAnalysis.Data> data = FXCollections.observableArrayList(dataArray);
-
-        TableColumn<ImageAnalysis.Data, Integer> partColumn = new TableColumn<>("Часть");
-        partColumn.setCellValueFactory(new PropertyValueFactory<>("part"));
-
-        TableColumn<ImageAnalysis.Data, Integer> uniqueShadesColumn = new TableColumn<>("Степень свободы");
-        uniqueShadesColumn.setCellValueFactory(new PropertyValueFactory<>("uniqueShades"));
-
-        TableColumn<ImageAnalysis.Data, Double> chiSquaredColumn = new TableColumn<>("Хи-квадрат");
-        chiSquaredColumn.setCellValueFactory(new PropertyValueFactory<>("chiSquared"));
-
-        TableColumn<ImageAnalysis.Data, Double> pValueColumn = new TableColumn<>("P-значение");
-        pValueColumn.setCellValueFactory(new PropertyValueFactory<>("pValue"));
-
-        Table.setItems(data);
-        Table.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
-        Table.getColumns().setAll(partColumn, uniqueShadesColumn, chiSquaredColumn, pValueColumn);
-    }
     @FXML
     public void initialize() {
-        button3.setOnAction(event -> {
-            BufferedImage bufferedImage = SwingFXUtils.fromFXImage(Cock11.getImage(), null);
-            int[] histogram = ImageHistogram.hisogramm(bufferedImage);
-            if (histogram != null) {
-                try {
-                    showHistogramWindow(histogram);
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
+        chooseImg.setOnAction(event -> {
+           paneTwo.getChildren().clear();
+           loader = new FXMLLoader(getClass().getResource("page1.fxml"));
+           try {
+               paneTwo.getChildren().add(loader.load());
+           } catch (IOException e) {
+               e.printStackTrace();
+           }
+        });
+        addStego.setOnAction(event -> {
+            paneTwo.getChildren().clear();
+            loader = new FXMLLoader(getClass().getResource("page2.fxml"));
+            try {
+                paneTwo.getChildren().add(loader.load());
+            } catch (IOException e) {
+                e.printStackTrace();
             }
         });
-    }
+        visualAttack.setOnAction(event -> {
+            paneTwo.getChildren().clear();
+            loader = new FXMLLoader(getClass().getResource("page3.fxml"));
+            try {
+                paneTwo.getChildren().add(loader.load());
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
+        showHistogram.setOnAction(event -> {
+            paneTwo.getChildren().clear();
+            loader = new FXMLLoader(getClass().getResource("page4.fxml"));
+            try {
+                paneTwo.getChildren().add(loader.load());
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
+        tableXi.setOnAction(event -> {
+            paneTwo.getChildren().clear();
+            loader = new FXMLLoader(getClass().getResource("page5.fxml"));
+            try {
+                paneTwo.getChildren().add(loader.load());
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
 
-    private void showHistogramWindow(int[] histogram) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("histogramview.fxml"));
-        Stage stage = new Stage();
 
-        stage.setTitle("Гистограмма");
-        stage.setWidth(1920);  // Шир// ина окна
-        stage.setHeight(1080);
-        stage.setResizable(false);
 
-        stage.setScene(new Scene(loader.load()));
-        HistogramController controller = loader.getController();
-        controller.displayHistogram(histogram);
-        stage.show();
-    }
+
+
+
+
+
+//        button3.setOnAction(event -> {
+//            BufferedImage bufferedImage = SwingFXUtils.fromFXImage(Cock11.getImage(), null);
+//            int[] histogram = ImageHistogram.hisogramm(bufferedImage);
+//            if (histogram != null) {
+//                try {
+//                    showHistogramWindow(histogram);
+//                } catch (IOException e) {
+//                    e.printStackTrace();
+//                }
+//            }
+//        });
+//    }
+//
+//    private void showHistogramWindow(int[] histogram) throws IOException {
+//        FXMLLoader loader = new FXMLLoader(getClass().getResource("histogramview.fxml"));
+//        Stage stage = new Stage();
+//
+//        stage.setTitle("Гистограмма");
+//        stage.setWidth(1920);  // Шир// ина окна
+//        stage.setHeight(1080);
+//        stage.setResizable(false);
+//
+//        stage.setScene(new Scene(loader.load()));
+//        HistogramController controller = loader.getController();
+//        controller.displayHistogram(histogram);
+//        stage.show();
+  }
 }

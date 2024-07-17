@@ -35,6 +35,6 @@
         </columns>
     </TableView>
     <Button fx:id="buttonTable" layoutX="1447.0" layoutY="975.0" mnemonicParsing="false" onAction="#analysis" prefHeight="25.0" prefWidth="74.0" text="Таблица" />
-    <Slider fx:id="slider1" blockIncrement="1.0" layoutX="1373.0" layoutY="938.0" min="32.0" prefHeight="25.0" prefWidth="223.0" />
+    <Slider fx:id="slider1" blockIncrement="1.0" layoutX="1373.0" layoutY="938.0" min="1.0" prefHeight="25.0" prefWidth="223.0" />
    <Button fx:id="button3" layoutX="898.0" layoutY="1004.0" mnemonicParsing="false" text="Гистограмма" />
 </Pane>

@@ -4,6 +4,8 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -11,8 +13,9 @@ import java.io.IOException;
 public class Main extends Application {
 
     private static Stage stage;
-    //public static ImageView Cock;
-    //public static ImageView Cock1;
+    public static Image imageOne;
+    public static Image imageTwo;
+    public static Image imageThree;
     //public static ImageView Cock11;
 
     //проверять переменную при загрузки компонента
@@ -21,7 +24,7 @@ public class Main extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         Main.stage = stage;
-        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("mainview.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("mainWindow.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 1920, 1080);
         scene.getStylesheets().add(getClass().getResource("styles.css").toExternalForm());
         stage.setTitle("Test");
