@@ -7,10 +7,11 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Rectangle?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1072.0" prefWidth="1716.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.stego.stego.Page2Controller">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1100.0" prefWidth="1716.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.stego.stego.Page2Controller">
    <children>
       <VBox alignment="CENTER" layoutX="965.0" layoutY="-2.0" prefHeight="1061.0" prefWidth="425.0" spacing="100.0">
          <children>
@@ -28,13 +29,19 @@
             <Button fx:id="button2" mnemonicParsing="false" onAction="#extractF" text="Вывести текст" />
          </children>
       </VBox>
-      <VBox alignment="CENTER" layoutX="93.0" layoutY="8.0" prefHeight="1020.0" prefWidth="520.0" spacing="10.0">
+      <VBox alignment="CENTER" layoutX="177.0" layoutY="9.0" prefHeight="1020.0" prefWidth="520.0" spacing="10.0">
          <children>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff4e" height="516.0" stroke="BLACK" strokeType="INSIDE" width="516.0" />
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ff21214b" height="516.0" stroke="BLACK" strokeType="INSIDE" width="516.0" />
+            <!-- Рамка вокруг изображения 1 -->
+            <StackPane>
+               <Rectangle arcHeight="5.0" arcWidth="5.0" fill="TRANSPARENT" height="514.0" stroke="BLACK" strokeWidth="2.0" width="514.0" />
+               <ImageView fx:id="imageView1" fitHeight="512.0" fitWidth="512.0" pickOnBounds="true" preserveRatio="true" />
+            </StackPane>
+            <!-- Рамка вокруг изображения 2 -->
+            <StackPane prefHeight="472.0" prefWidth="520.0">
+               <Rectangle arcHeight="5.0" arcWidth="5.0" fill="TRANSPARENT" height="514.0" stroke="BLACK" strokeWidth="2.0" width="514.0" />
+               <ImageView fx:id="imageView2" fitHeight="512.0" fitWidth="512.0" pickOnBounds="true" preserveRatio="true" />
+            </StackPane>
          </children>
       </VBox>
-      <ImageView fx:id="imageView2" fitHeight="512.0" fitWidth="512.0" layoutX="97.0" layoutY="536.0" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fx:id="imageView1" fitHeight="512.0" fitWidth="512.0" layoutX="98.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true" />
    </children>
 </Pane>
