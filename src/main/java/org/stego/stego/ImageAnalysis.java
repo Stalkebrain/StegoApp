@@ -43,6 +43,10 @@ public class ImageAnalysis {
     }
 
     public static Data[] AnalisisImage(BufferedImage img,int sliderValue1) throws IOException {
+        if(sliderValue1==0){
+            sliderValue1=1;
+        }
+
         List<Data> dataList = new ArrayList<>();
 
         // Загрузка изображения

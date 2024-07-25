@@ -5,7 +5,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -16,6 +15,7 @@ public class Main extends Application {
     public static Image imageOne;
     public static Image imageTwo;
     public static Image imageThree;
+    public static Float sladerV;
     //public static ImageView Cock11;
 
     //проверять переменную при загрузки компонента
@@ -29,6 +29,7 @@ public class Main extends Application {
         scene.getStylesheets().add(getClass().getResource("styles.css").toExternalForm());
         stage.setTitle("Test");
         stage.setScene(scene);
+        stage.setMaximized(true);
         stage.show();
     }
 

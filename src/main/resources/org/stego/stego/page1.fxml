@@ -5,11 +5,10 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.shape.Rectangle?>
 
-
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1082.0" prefWidth="1716.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.stego.stego.Page1Controller">
    <children>
-      <Button layoutX="762.0" layoutY="853.0" mnemonicParsing="false" prefHeight="57.0" prefWidth="201.0" text="Button" fx:id="button1" onAction="#downloadImage"/>
-      <ImageView fitHeight="512.0" fitWidth="512.0" layoutX="618.0" layoutY="166.0" pickOnBounds="true" preserveRatio="true" fx:id="imageView"/>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff4e" height="516.0" layoutX="591.0" layoutY="193.0" stroke="BLACK" strokeType="INSIDE" width="516.0"/>
+      <Button fx:id="button1" layoutX="761.0" layoutY="838.0" mnemonicParsing="false" onAction="#downloadImage" prefHeight="57.0" prefWidth="201.0" text="Выбрать изображение" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff4e" height="516.0" layoutX="591.0" layoutY="193.0" stroke="BLACK" strokeType="INSIDE" width="516.0" />
+      <ImageView fx:id="imageView" fitHeight="512.0" fitWidth="512.0" layoutX="593.0" layoutY="195.0" pickOnBounds="true" preserveRatio="true" />
    </children>
 </Pane>

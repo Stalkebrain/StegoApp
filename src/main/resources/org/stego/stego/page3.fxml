@@ -5,13 +5,12 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.shape.Rectangle?>
 
-
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1082.0" prefWidth="1716.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.stego.stego.Page3Controller">
    <children>
-      <ImageView fitHeight="512.0" fitWidth="512.0" layoutX="1001.0" layoutY="201.0" pickOnBounds="true" preserveRatio="true" fx:id="imageView1"/>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff4e" height="516.0" layoutX="188.0" layoutY="196.0" stroke="BLACK" strokeType="INSIDE" width="516.0" />
-      <ImageView fitHeight="512.0" fitWidth="512.0" layoutX="190.0" layoutY="197.0" pickOnBounds="true" preserveRatio="true" fx:id="imageView2"/>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ff21214b" height="516.0" layoutX="1000.0" layoutY="200.0" stroke="BLACK" strokeType="INSIDE" width="516.0" />
-      <Button layoutX="806.0" layoutY="818.0" mnemonicParsing="false" text="Визуальная атака" fx:id="button1" onAction="#visualAttack"/>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ff21214f" height="516.0" layoutX="1009.0" layoutY="133.0" stroke="BLACK" strokeType="INSIDE" width="516.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff4a" height="516.0" layoutX="196.0" layoutY="135.0" stroke="BLACK" strokeType="INSIDE" width="516.0" />
+      <Button fx:id="button1" layoutX="791.0" layoutY="828.0" mnemonicParsing="false" onAction="#visualAttack" prefHeight="41.0" prefWidth="144.0" text="Визуальная атака" />
+      <ImageView fx:id="imageView2" fitHeight="512.0" fitWidth="512.0" layoutX="1011.0" layoutY="135.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="imageView1" fitHeight="512.0" fitWidth="512.0" layoutX="198.0" layoutY="136.0" pickOnBounds="true" preserveRatio="true" />
    </children>
 </Pane>

@@ -13,6 +13,7 @@ import java.awt.image.BufferedImage;
 
 import static org.stego.stego.Main.imageOne;
 import static org.stego.stego.Main.imageTwo;
+import static org.stego.stego.Main.sladerV;
 
 public class Page2Controller {
     @FXML
@@ -41,7 +42,8 @@ public class Page2Controller {
     @FXML
     private void stegoPlus(ActionEvent event) {
         BufferedImage bufferedImage = SwingFXUtils.fromFXImage(imageView1.getImage(), null);
-        float slider = (float) this.slider1.getValue();
+        float slider = (float) this.slider1.getValue()/100;
+        sladerV = (float) slider1.getValue()/100;
         String textf = textField.getText();
         imageView2.setImage(SwingFXUtils.toFXImage(FullImageSteganography.stegoPlusF(bufferedImage, textf, slider), null));
         imageTwo = imageView2.getImage();
@@ -49,7 +51,7 @@ public class Page2Controller {
     @FXML
     private void extractF(ActionEvent event) {
         BufferedImage bufferedImage = SwingFXUtils.fromFXImage(imageView2.getImage(), null);
-        float sliderValue = (float) this.slider1.getValue();
+        float sliderValue = sladerV;
         String extractedText = FullImageSteganography.extractFM(bufferedImage, sliderValue);
 
         // Очистка текущего текста и добавление нового

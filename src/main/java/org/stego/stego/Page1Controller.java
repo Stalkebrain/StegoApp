@@ -27,7 +27,7 @@ public class Page1Controller {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Выберите изображение");
         fileChooser.getExtensionFilters().addAll(
-                new FileChooser.ExtensionFilter("Image Files", "*.bmp"));
+                new FileChooser.ExtensionFilter("Image Files", "*.bmp" , "*.jpg", "*.jpeg"));
         File selectedFile = fileChooser.showOpenDialog(((Button) event.getSource()).getScene().getWindow());
         if (selectedFile != null) {
             Image image = new Image(selectedFile.toURI().toString());
