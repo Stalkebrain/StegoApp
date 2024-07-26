@@ -4,6 +4,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
@@ -16,6 +17,8 @@ public class Main extends Application {
     public static Image imageTwo;
     public static Image imageThree;
     public static Float sladerV;
+    public static ChoiceBox<String> channelV;
+    public static int maxChars;
     //public static ImageView Cock11;
 
     //проверять переменную при загрузки компонента

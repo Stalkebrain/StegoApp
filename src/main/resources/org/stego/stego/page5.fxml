@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Slider?>
 <?import javafx.scene.control.TableColumn?>
@@ -9,16 +10,38 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1082.0" prefWidth="1716.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.stego.stego.Page5Controller">
    <children>
-      <VBox alignment="CENTER" layoutX="144.0" layoutY="23.0" prefHeight="1025.0" prefWidth="1452.0" spacing="100.0">
+      <VBox alignment="CENTER" layoutX="144.0" layoutY="23.0" prefHeight="1025.0" prefWidth="1452.0" spacing="20.0">
          <children>
-            <TableView fx:id="table" prefHeight="761.0" prefWidth="1452.0">
-              <columns>
-                <TableColumn prefWidth="75.0" text="C1" />
-                <TableColumn prefWidth="75.0" text="C2" />
-              </columns>
+            <TableView fx:id="table" prefHeight="800.0" prefWidth="1452.0">
+               <columns>
+                  <TableColumn fx:id="partColumnRed" prefWidth="75.0" text="Часть" />
+                  <TableColumn fx:id="uniqueShadesColumnRed" prefWidth="75.0" text="Степень свободы" />
+                  <TableColumn fx:id="chiSquaredColumnRed" prefWidth="75.0" text="Хи-квадрат (Красный)" />
+                  <TableColumn fx:id="pValueColumnRed" prefWidth="75.0" text="P-значение (Красный)" />
+               </columns>
+            </TableView>
+            <TableView fx:id="table1" prefHeight="800.0" prefWidth="1452.0">
+               <columns>
+                  <TableColumn fx:id="partColumnGreen" prefWidth="75.0" text="Часть" />
+                  <TableColumn fx:id="uniqueShadesColumnGreen" prefWidth="75.0" text="Степень свободы" />
+                  <TableColumn fx:id="chiSquaredColumnGreen" prefWidth="75.0" text="Хи-квадрат (Зеленый)" />
+                  <TableColumn fx:id="pValueColumnGreen" prefWidth="75.0" text="P-значение (Зеленый)" />
+               </columns>
+            </TableView>
+            <TableView fx:id="table2" prefHeight="800.0" prefWidth="1452.0">
+               <columns>
+                  <TableColumn fx:id="partColumnBlue" prefWidth="75.0" text="Часть" />
+                  <TableColumn fx:id="uniqueShadesColumnBlue" prefWidth="75.0" text="Степень свободы" />
+                  <TableColumn fx:id="chiSquaredColumnBlue" prefWidth="75.0" text="Хи-квадрат (Синий)" />
+                  <TableColumn fx:id="pValueColumnBlue" prefWidth="75.0" text="P-значение (Синий)" />
+               </columns>
             </TableView>
             <Slider fx:id="slider" blockIncrement="1.0" majorTickUnit="50.0" max="2000" showTickLabels="true" showTickMarks="true" value="1.0" />
-            <Button fx:id="button" mnemonicParsing="false" text="Button" />
+            <Button fx:id="button" mnemonicParsing="false" text="Рассчитать">
+               <VBox.margin>
+                  <Insets bottom="50.0" />
+               </VBox.margin>
+            </Button>
          </children>
       </VBox>
    </children>

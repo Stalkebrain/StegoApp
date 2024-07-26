@@ -15,14 +15,22 @@ public class ImageAnalysis {
     public static class Data {
         private final int part;
         private final int uniqueShades;
-        private final double chiSquared;
-        private final double pValue;
+        private final double chiSquaredRed;
+        private final double chiSquaredGreen;
+        private final double chiSquaredBlue;
+        private final double pValueRed;
+        private final double pValueGreen;
+        private final double pValueBlue;
 
-        public Data(int part, int uniqueShades, double chiSquared, double pValue) {
+        public Data(int part, int uniqueShades, double chiSquaredRed, double chiSquaredGreen, double chiSquaredBlue, double pValueRed, double pValueGreen, double pValueBlue) {
             this.part = part;
             this.uniqueShades = uniqueShades;
-            this.chiSquared = chiSquared;
-            this.pValue = pValue;
+            this.chiSquaredRed = chiSquaredRed;
+            this.chiSquaredGreen = chiSquaredGreen;
+            this.chiSquaredBlue = chiSquaredBlue;
+            this.pValueRed = pValueRed;
+            this.pValueGreen = pValueGreen;
+            this.pValueBlue = pValueBlue;
         }
 
         public int getPart() {
@@ -33,20 +41,32 @@ public class ImageAnalysis {
             return uniqueShades;
         }
 
-        public double getChiSquared() {
-            return chiSquared;
+        public double getChiSquaredRed() {
+            return chiSquaredRed;
         }
 
-        public double getPValue() {
-            return pValue;
+        public double getChiSquaredGreen() {
+            return chiSquaredGreen;
+        }
+
+        public double getChiSquaredBlue() {
+            return chiSquaredBlue;
+        }
+
+        public double getPValueRed() {
+            return pValueRed;
+        }
+
+        public double getPValueGreen() {
+            return pValueGreen;
+        }
+
+        public double getPValueBlue() {
+            return pValueBlue;
         }
     }
 
-    public static Data[] AnalisisImage(BufferedImage img,int sliderValue1) throws IOException {
-        if(sliderValue1==0){
-            sliderValue1=1;
-        }
-
+    public static Data[] AnalisisImage(BufferedImage img, int sliderValue1) throws IOException {
         List<Data> dataList = new ArrayList<>();
 
         // Загрузка изображения
@@ -59,51 +79,82 @@ public class ImageAnalysis {
         // Размер одной части
         int partWidth = width / sliderValue1;
 
-        // Хи-квадрат для каждой части
-        double[] chiSquaredArray = new double[sliderValue1];
-        int[] uniqueShadesArray = new int[sliderValue1]; // Массив для хранения количества уникальных оттенков серого для каждой части
+        // Хи-квадрат для каждого канала
+        double[] chiSquaredArrayRed = new double[sliderValue1];
+        double[] chiSquaredArrayGreen = new double[sliderValue1];
+        double[] chiSquaredArrayBlue = new double[sliderValue1];
+        int[] uniqueShadesArray = new int[sliderValue1]; // Массив для хранения количества уникальных оттенков для каждой части
 
         for (int i = 0; i < sliderValue1; i++) {
-            // Создание карты частот для текущей части
-            HashMap<Integer, Integer> frequencyMap = new HashMap<>();
+            // Создание карты частот для каждого канала
+            HashMap<Integer, Integer> frequencyMapRed = new HashMap<>();
+            HashMap<Integer, Integer> frequencyMapGreen = new HashMap<>();
+            HashMap<Integer, Integer> frequencyMapBlue = new HashMap<>();
+
             // Подсчет частот оттенков в текущей части
             for (int x = i * partWidth; x < (i + 1) * partWidth; x++) {
                 for (int y = 0; y < height; y++) {
                     int rgb = image.getRGB(x, y);
-                    int grayScale = (rgb >> 16) & 0xff; // Преобразование в оттенки серого
+                    int red = (rgb >> 16) & 0xff;
+                    int green = (rgb >> 8) & 0xff;
+                    int blue = rgb & 0xff;
 
-                    frequencyMap.put(grayScale, frequencyMap.getOrDefault(grayScale, 0) + 1);
+                    // Преобразование значений каждого канала в оттенки серого и подсчет частот
+                    frequencyMapRed.put(red, frequencyMapRed.getOrDefault(red, 0) + 1);
+                    frequencyMapGreen.put(green, frequencyMapGreen.getOrDefault(green, 0) + 1);
+                    frequencyMapBlue.put(blue, frequencyMapBlue.getOrDefault(blue, 0) + 1);
                 }
             }
 
-            int uniqueShades = frequencyMap.size();
+            // Объединение всех частотных карт для получения общего количества уникальных оттенков
+            HashMap<Integer, Integer> combinedFrequencyMap = new HashMap<>();
+            combinedFrequencyMap.putAll(frequencyMapRed);
+            combinedFrequencyMap.putAll(frequencyMapGreen);
+            combinedFrequencyMap.putAll(frequencyMapBlue);
+
+            int uniqueShades = combinedFrequencyMap.size();
             uniqueShadesArray[i] = uniqueShades; // Сохранение количества уникальных оттенков для текущей части
 
-            // Применение формулы хи-квадрат
-            double chiSquared = 0;
-            for (int j = 0; j < 128; j++) {
-                double n2j = frequencyMap.getOrDefault(2 * j + 1, 0);
-                double nj = frequencyMap.getOrDefault(2 * j, 0);
-                double pj = (n2j + nj) / 2.0;
-                if (pj != 0) { // Проверка, чтобы избежать деления на ноль
-                    chiSquared += Math.pow(n2j - pj, 2) / pj;
-                }
-            }
+            // Применение формулы хи-квадрат для каждого канала
+            double chiSquaredRed = computeChiSquared(frequencyMapRed);
+            double chiSquaredGreen = computeChiSquared(frequencyMapGreen);
+            double chiSquaredBlue = computeChiSquared(frequencyMapBlue);
 
-            chiSquaredArray[i] = chiSquared;
+            // Сохранение значений хи-квадрат для каждого канала
+            chiSquaredArrayRed[i] = chiSquaredRed;
+            chiSquaredArrayGreen[i] = chiSquaredGreen;
+            chiSquaredArrayBlue[i] = chiSquaredBlue;
         }
 
         // Вывод результатов
         ChiSquaredDistribution chiSquaredDistribution = new ChiSquaredDistribution(128);
 
         // Вывод вероятностей для каждой части
-        for (int i = 0; i < chiSquaredArray.length; i++) {
-            double chiSquared = chiSquaredArray[i];
-            int uniqueShades = uniqueShadesArray[i]; // Получение количества уникальных оттенков для текущей части
-            // Вычисление вероятности (p-value)
-            double pValue = 1 - chiSquaredDistribution.cumulativeProbability(chiSquared);
-            dataList.add(new Data(i + 1, uniqueShades / 2, chiSquared, pValue));
+        for (int i = 0; i < sliderValue1; i++) {
+            double chiSquaredRed = chiSquaredArrayRed[i];
+            double chiSquaredGreen = chiSquaredArrayGreen[i];
+            double chiSquaredBlue = chiSquaredArrayBlue[i];
+
+            double pValueRed = 1 - chiSquaredDistribution.cumulativeProbability(chiSquaredRed);
+            double pValueGreen = 1 - chiSquaredDistribution.cumulativeProbability(chiSquaredGreen);
+            double pValueBlue = 1 - chiSquaredDistribution.cumulativeProbability(chiSquaredBlue);
+
+            dataList.add(new Data(i + 1, uniqueShadesArray[i], chiSquaredRed, chiSquaredGreen, chiSquaredBlue, pValueRed, pValueGreen, pValueBlue));
         }
+
         return dataList.toArray(new Data[0]);
+    }
+
+    private static double computeChiSquared(HashMap<Integer, Integer> frequencyMap) {
+        double chiSquared = 0;
+        for (int j = 0; j < 128; j++) {
+            double n2j = frequencyMap.getOrDefault(2 * j + 1, 0);
+            double nj = frequencyMap.getOrDefault(2 * j, 0);
+            double pj = (n2j + nj) / 2.0;
+            if (pj != 0) { // Проверка, чтобы избежать деления на ноль
+                chiSquared += Math.pow(n2j - pj, 2) / pj;
+            }
+        }
+        return chiSquared;
     }
 }
