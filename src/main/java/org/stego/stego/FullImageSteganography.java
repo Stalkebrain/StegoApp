@@ -6,6 +6,9 @@ import java.nio.charset.StandardCharsets;
 public class FullImageSteganography {
 
     public static BufferedImage stegoPlusF(BufferedImage img, String msg, float procent1, String channel) {
+        // Очистка LSB перед встраиванием нового сообщения
+        clearLSB(img, procent1, channel);
+
         if (channel.equalsIgnoreCase("Красный")) {
             embedMessageInChannel(img, msg, procent1, 16);
         } else if (channel.equalsIgnoreCase("Зелёный")) {
@@ -18,6 +21,35 @@ public class FullImageSteganography {
             embedFullMessage(img, msg, procent1);
         }
         return img;
+    }
+
+    private static void clearLSB(BufferedImage img, float procent1, String channel) {
+        int imageWidth = img.getWidth();
+        int imageHeight = img.getHeight();
+        int procImageWidth = (int) (imageWidth * procent1);
+        int[] shifts;
+
+        if (channel.equalsIgnoreCase("Красный")) {
+            shifts = new int[]{16};
+        } else if (channel.equalsIgnoreCase("Зелёный")) {
+            shifts = new int[]{8};
+        } else if (channel.equalsIgnoreCase("Синий")) {
+            shifts = new int[]{0};
+        } else {
+            shifts = new int[]{16, 8, 0};
+        }
+
+        for (int y = 0; y < imageHeight; y++) {
+            for (int x = 0; x < procImageWidth; x++) {
+                int pixel = img.getRGB(x, y);
+                for (int shift : shifts) {
+                    int channelValue = (pixel >> shift) & 0xFF;
+                    channelValue = channelValue & 0xFE; // Очистка LSB
+                    pixel = (pixel & ~(0xFF << shift)) | (channelValue << shift);
+                }
+                img.setRGB(x, y, pixel);
+            }
+        }
     }
 
     private static void embedFullMessage(BufferedImage img, String msg, float procent1) {
@@ -33,8 +65,7 @@ public class FullImageSteganography {
                 int pixel = img.getRGB(x, y);
                 for (int shift = 16; shift >= 0; shift -= 8) {
                     int channelValue = (pixel >> shift) & 0xFF;
-                    int lsb = (msgBitIndex < msgLength) ? (msgBytes[msgBitIndex / 8] >> (7 - (msgBitIndex % 8))) & 1 : 0;
-                    channelValue = (channelValue & 0xFE) | lsb;
+                    channelValue = modifyChannel(channelValue, msgBytes, msgBitIndex, msgLength);
                     pixel = (pixel & ~(0xFF << shift)) | (channelValue << shift);
                     msgBitIndex++;
                     if (msgBitIndex == msgLength) msgBitIndex = 0; // Повторное встраивание сообщения
@@ -56,14 +87,25 @@ public class FullImageSteganography {
             for (int x = 0; x < procImageWidth; x++) {
                 int pixel = img.getRGB(x, y);
                 int channelValue = (pixel >> shift) & 0xFF;
-                int lsb = (msgBitIndex < msgLength) ? (msgBytes[msgBitIndex / 8] >> (7 - (msgBitIndex % 8))) & 1 : 0;
-                channelValue = (channelValue & 0xFE) | lsb;
+                channelValue = modifyChannel(channelValue, msgBytes, msgBitIndex, msgLength);
                 pixel = (pixel & ~(0xFF << shift)) | (channelValue << shift);
                 img.setRGB(x, y, pixel);
                 msgBitIndex++;
                 if (msgBitIndex == msgLength) msgBitIndex = 0; // Повторное встраивание сообщения
             }
         }
+    }
+
+    private static int modifyChannel(int channel, byte[] msgBytes, int msgBitIndex, int msgLength) {
+        int lsb = (msgBitIndex < msgLength) ? (msgBytes[msgBitIndex / 8] >> (7 - (msgBitIndex % 8))) & 1 : 0;
+        if (lsb == 0 && (channel % 2 != 0)) {
+            // Если LSB сообщения равен 0 и канал нечётный, делаем его чётным
+            channel = channel - 1;
+        } else if (lsb == 1 && (channel % 2 == 0)) {
+            // Если LSB сообщения равен 1 и канал чётный, делаем его нечётным
+            channel = channel + 1;
+        }
+        return Math.min(255, Math.max(0, channel)); // Убедитесь, что значение канала находится в допустимом диапазоне
     }
 
     public static String extractFM(BufferedImage img, float procent1, String channel) {
