@@ -2,3 +2,304 @@
 -fx-wrap-text:true;
 
 }
+.label{
+    -fx-text-fill: white;
+}
+
+Text{
+    -fx-fill: white;
+}
+
+Line {
+    -fx-stroke: white;
+}
+
+.lineGreen{
+    -fx-stroke: #008017;
+}
+
+.lineRed{
+    -fx-stroke: c31212;
+}
+
+.lineWhite{
+    -fx-stroke: white;
+}
+
+.circleBlack{
+    -fx-stroke: white;
+    -fx-fill: #1e1f22;
+}
+
+Rectangle{
+    -fx-stroke: white;
+    -fx-fill: #1e1f22;
+}
+
+.rectangleDarkGreen{
+    -fx-stroke: white;
+    -fx-fill: #004207;
+}
+
+.rectangleWhite{
+    -fx-stroke: white;
+    -fx-fill: white;
+}
+
+.rectangleGrey{
+    -fx-stroke: white;
+    -fx-fill: #616161;
+}
+
+Polygon{
+    -fx-stroke: white;
+    -fx-fill: white;
+}
+
+.polygonGreen{
+    -fx-stroke: #008017;
+    -fx-fill: #008017;
+}
+
+.polygonRed{
+    -fx-stroke: c31212;
+    -fx-fill: c31212;
+}
+
+.ellipseBlack{
+    -fx-stroke: white;
+    -fx-fill: #1e1f22;
+}
+
+GridPane{
+    -fx-background-color: #2d2d2d;
+}
+
+.root {
+    -fx-background-color: #232a2f;
+}
+
+/* Настройки для TableView */
+.table-view {
+    -fx-background-color: #2d2d2d; /* Темно-серый фон таблицы */
+    -fx-border-color: transparent; /* Скрыть бордер вокруг таблицы */
+    -fx-padding: 0;
+}
+
+/* Настройки для заголовков столбцов */
+.table-view .column-header {
+    -fx-background-color: #1e1e1e; /* Очень темный фон заголовков столбцов */
+    -fx-text-fill: white; /* Белый текст заголовков столбцов */
+}
+
+/* Настройки для строк таблицы */
+.table-view .table-row-cell {
+    -fx-background-color: #2d2d2d; /* Темный фон строк таблицы */
+    -fx-text-fill: white; /* Белый текст в строках */
+}
+
+.table-view .table-row-cell:odd {
+    -fx-background-color: #2a2a2a; /* Чередующиеся строки для лучшей видимости */
+    -fx-text-fill: white; /* Белый текст в строках */
+}
+
+/* Настройки для ячеек таблицы */
+.table-view .table-cell {
+    -fx-text-fill: white; /* Белый текст в ячейках таблицы */
+    -fx-alignment: center; /* Центрирование текста в ячейках */
+}
+
+/* Настройки для TextArea */
+.text-area {
+    -fx-outline : none;
+    -fx-font-size: 14px;
+    -fx-text-fill: #fff; /* Белый текст */
+    -fx-background-color: #1e1e1e; /* Темно-серый фон */
+    -fx-border-color: #4a4a4a; /* Темно-серый бордер */
+    -fx-border-width: 1px;
+    -fx-wrap-text: true;
+}
+
+.text-area .content {
+    -fx-background-color: #2d2d2d;
+}
+
+/* Скроллбары для TextArea */
+.text-area .scroll-bar:vertical {
+    -fx-background-color: #1e1e1e; /* Темный фон скроллбара */
+    -fx-background-insets: 0;
+    -fx-padding: 0;
+}
+
+.text-area .scroll-bar:vertical .thumb {
+    -fx-background-color: #4a4a4a; /* Темный цвет ползунка скроллбара */
+    -fx-background-insets: 0;
+    -fx-background-radius: 5px;
+}
+
+.text-area .scroll-bar:vertical .track {
+    -fx-background-color: #1e1e1e; /* Цвет трека скроллбара */
+}
+
+.text-area .scroll-bar:vertical .increment-arrow-button,
+.text-area .scroll-bar:vertical .decrement-arrow-button {
+    -fx-background-color: #1e1e1e; /* Цвет фона стрелок скроллбара */
+}
+
+.text-area .scroll-bar:vertical .increment-arrow-button .arrow,
+.text-area .scroll-bar:vertical .decrement-arrow-button .arrow {
+    -fx-background-color: #4a4a4a; /* Цвет стрелок скроллбара */
+}
+
+/* Убрать горизонтальный скроллбар и его область для TextArea */
+.text-area .scroll-bar:horizontal {
+    -fx-opacity: 0;
+    -fx-max-height: 0;
+    -fx-background-color: transparent;
+}
+
+.text-area .scroll-bar:horizontal .thumb {
+    -fx-opacity: 0;
+    -fx-background-color: transparent;
+}
+
+.text-area .viewport {
+    -fx-padding: 0 0 0 30px;
+}
+
+/* Устранение белого квадратика в нижнем правом углу */
+.table-view .corner {
+    -fx-background-color: #2d2d2d; /* Цвет фона в углу, где пересекаются скроллбары */
+}
+
+
+/* Настройки для TextField */
+.text-field {
+    -fx-font-size: 14px;
+    -fx-text-fill: white; /* Белый текст */
+    -fx-background-color: #2d2d2d; /* Темно-серый фон */
+    -fx-padding: 5px;
+    -fx-background-radius: 5px;
+    -fx-border-color: #4a4a4a; /* Темно-серый бордер */
+    -fx-border-width: 1px;
+}
+
+/* Устранение линии в таблице */
+.table-view .column-header .table-column-header-background,
+.table-view .column-header .table-column-header {
+    -fx-border-color: transparent; /* Удалить линию вокруг заголовков столбцов */
+}
+
+.table-view .table-cell {
+    -fx-border-color: transparent; /* Удалить линии вокруг ячеек таблицы */
+}
+
+/* Убрать горизонтальный скроллбар и его область */
+.table-view .scroll-bar:horizontal {
+    -fx-opacity: 0;
+    -fx-max-height: 0;
+    -fx-background-color: transparent;
+}
+
+/* Убрать горизонтальную область пересечения скроллбаров */
+.table-view .viewport {
+    -fx-padding: 0;
+}
+
+/* Стиль вертикального скроллбара */
+.table-view .scroll-bar:vertical {
+    -fx-background-color: #1e1e1e; /* Темный фон скроллбара */
+    -fx-background-insets: 0;
+    -fx-padding: 0;
+}
+
+.table-view .scroll-bar:vertical .thumb {
+    -fx-background-color: #4a4a4a; /* Темный цвет ползунка скроллбара */
+    -fx-background-insets: 0;
+    -fx-background-radius: 5px;
+}
+
+.table-view .scroll-bar:vertical .track {
+    -fx-background-color: #1e1e1e; /* Цвет трека скроллбара */
+}
+
+.table-view .scroll-bar:vertical .increment-arrow-button,
+.table-view .scroll-bar:vertical .decrement-arrow-button {
+    -fx-background-color: #1e1e1e; /* Цвет фона стрелок скроллбара */
+}
+
+.table-view .scroll-bar:vertical .increment-arrow-button .arrow,
+.table-view .scroll-bar:vertical .decrement-arrow-button .arrow {
+    -fx-background-color: #4a4a4a; /* Цвет стрелок скроллбара */
+}
+
+/* Устранение белого квадратика в нижнем правом углу */
+.table-view .corner {
+    -fx-background-color: #2d2d2d; /* Цвет фона в углу, где пересекаются скроллбары */
+}
+
+/* Настройки для кнопок */
+.nextButton, .nextChapterButton, .testButton, .prevButton, .prevChapterButton, .exitButton, .hashButton {
+    -fx-background-color: white;
+    -fx-border-color: black;
+    -fx-border-width: 1px;
+    -fx-background-radius: 0;
+    -fx-border-radius: 0;
+    -fx-padding: 10px 20px;
+    -fx-text-fill: black;
+    -fx-font-size: 14px;
+    -fx-background-insets: 0 0 0 0;
+}
+
+.nextButton:hover {
+    -fx-background-color: #4AE83A;
+    -fx-transition: background-color 1s ease-in-out;
+}
+
+.nextChapterButton:hover {
+    -fx-background-color: #FFD700; /* Золотой цвет для следующей главы */
+    -fx-transition: background-color 1s ease-in-out;
+}
+
+.testButton:hover {
+    -fx-background-color: #3AA6D0;
+    -fx-transition: background-color 1s ease-in-out;
+}
+
+.prevButton:hover {
+    -fx-background-color: #FF9340;
+    -fx-transition: background-color 1s ease-in-out;
+}
+
+.prevChapterButton:hover {
+    -fx-background-color: #1E90FF; /* Синий цвет для предыдущей главы */
+    -fx-transition: background-color 1s ease-in-out;
+}
+
+.exitButton:hover {
+    -fx-background-color: #FD3F49; /* Красный цвет для выхода */
+    -fx-transition: background-color 1s ease-in-out;
+}
+
+.hashLabel {
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-text-fill: white;
+    -fx-background-color: #1e1f22;
+    -fx-padding: 10px;
+    -fx-border-color: #cccccc;
+    -fx-border-width: 1px;
+    -fx-alignment: center;
+    -fx-cursor: hand;
+}
+
+.hashButton:hover {
+    -fx-background-color: #3AA6D0;
+}
+
+/* Убрать скроллбары для WebView */
+.webViewNonScrollBar .scroll-bar {
+  -fx-opacity: 0;
+  -fx-max-width: 0;
+  -fx-max-height: 0;
+}

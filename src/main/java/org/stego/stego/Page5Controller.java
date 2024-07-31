@@ -33,8 +33,9 @@ public class Page5Controller {
     public CheckBox syncCheckBox;
 
     @FXML
-    public void initialize() {
+    public void initialize() throws IOException {
         // Установка обработчика для кнопки
+        updateTables();
         button.setOnAction(event -> {
             if (imageTwo != null) {
                 try {
