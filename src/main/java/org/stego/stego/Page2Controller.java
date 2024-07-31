@@ -8,9 +8,14 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Slider;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.stage.FileChooser;
 
+import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 
 import static org.stego.stego.Main.imageOne;
 import static org.stego.stego.Main.imageTwo;
@@ -35,6 +40,8 @@ public class Page2Controller {
     public Button button2;
     @FXML
     public ChoiceBox<String> channelChoiceBox;
+    @FXML
+    public Button saveButton;
 
     @FXML
     public void initialize() {
@@ -44,9 +51,9 @@ public class Page2Controller {
         if (imageTwo != null) {
             imageView2.setImage(imageTwo);
         }
-        if(channelV != null){
+        if (channelV != null) {
             channelChoiceBox.getSelectionModel().select(channelV.getValue());
-        }else{
+        } else {
             channelChoiceBox.getSelectionModel().selectFirst();
         }
     }
@@ -69,10 +76,33 @@ public class Page2Controller {
         BufferedImage bufferedImage = SwingFXUtils.fromFXImage(imageView2.getImage(), null);
         float sliderValue = sladerV;
         String channel = channelV.getValue();
-        String extractedText = FullImageSteganography.extractFM(bufferedImage, sliderValue, channel, maxChars);
+        String extractedText = FullImageSteganography.extractFM(bufferedImage, sliderValue, channel);
 
         // Очистка текущего текста и добавление нового
         textArea.clear();
         textArea.setText(extractedText);
+    }
+
+    @FXML
+    private void saveImage(ActionEvent event) {
+        // Choose file location and name
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.getExtensionFilters().addAll(
+                new FileChooser.ExtensionFilter("Файлы PNG", "*.png", "*.PNG"),
+                new FileChooser.ExtensionFilter("Файлы BMP", "*.bmp", "*.BMP"),
+                new FileChooser.ExtensionFilter("Файлы JPG/JPEG", "*.jpg", "*.JPG", "*.jpeg", "*.JPEG")
+        );
+        fileChooser.setInitialFileName("image.png");
+        File file = fileChooser.showSaveDialog(saveButton.getScene().getWindow());
+
+        if (file != null) {
+            try {
+                Image image = imageView2.getImage();
+                BufferedImage bufferedImage = SwingFXUtils.fromFXImage(image, null);
+                ImageIO.write(bufferedImage, "png", file);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
     }
 }

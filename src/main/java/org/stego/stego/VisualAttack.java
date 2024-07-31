@@ -6,18 +6,6 @@ import java.io.File;
 import java.io.IOException;
 
 public class VisualAttack {
-
-    public static void main(String[] args) throws IOException {
-        String stegoImagePath = "src/main/resources/рисунок/123-stego.bmp";
-        String visualAttackImagePath = "src/main/resources/рисунок/123-stego-attack.bmp";
-
-        BufferedImage stegoImage = ImageIO.read(new File(stegoImagePath));
-        BufferedImage visualAttackImage = visualizeLSB(stegoImage);
-        ImageIO.write(visualAttackImage, "bmp", new File(visualAttackImagePath));
-        System.out.println("Визуальная атака выполнена и сохранена.");
-
-    }
-
     public static BufferedImage visualizeLSB(BufferedImage img) {
         int width = img.getWidth();
         int height = img.getHeight();

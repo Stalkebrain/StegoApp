@@ -66,7 +66,7 @@ public class ImageAnalysis {
         }
     }
 
-    public static Data[] AnalisisImage(BufferedImage img, int sliderValue1) throws IOException {
+    public static Data[] AnalisisImage(BufferedImage img, int sliderValue, String direction) throws IOException {
         List<Data> dataList = new ArrayList<>();
 
         // Загрузка изображения
@@ -77,32 +77,38 @@ public class ImageAnalysis {
         int height = image.getHeight();
 
         // Размер одной части
-        int partWidth = width / sliderValue1;
+        if (sliderValue == 0) {
+            sliderValue = 1;
+        }
+
+        int partSize = width / sliderValue; // Всегда горизонтальное деление
 
         // Хи-квадрат для каждого канала
-        double[] chiSquaredArrayRed = new double[sliderValue1];
-        double[] chiSquaredArrayGreen = new double[sliderValue1];
-        double[] chiSquaredArrayBlue = new double[sliderValue1];
-        int[] uniqueShadesArray = new int[sliderValue1]; // Массив для хранения количества уникальных оттенков для каждой части
+        double[] chiSquaredArrayRed = new double[sliderValue];
+        double[] chiSquaredArrayGreen = new double[sliderValue];
+        double[] chiSquaredArrayBlue = new double[sliderValue];
+        int[] uniqueShadesArray = new int[sliderValue]; // Массив для хранения количества уникальных оттенков для каждой части
 
-        for (int i = 0; i < sliderValue1; i++) {
+        for (int i = 0; i < sliderValue; i++) {
             // Создание карты частот для каждого канала
             HashMap<Integer, Integer> frequencyMapRed = new HashMap<>();
             HashMap<Integer, Integer> frequencyMapGreen = new HashMap<>();
             HashMap<Integer, Integer> frequencyMapBlue = new HashMap<>();
 
             // Подсчет частот оттенков в текущей части
-            for (int x = i * partWidth; x < (i + 1) * partWidth; x++) {
+            for (int x = 0; x < width; x++) {
                 for (int y = 0; y < height; y++) {
-                    int rgb = image.getRGB(x, y);
-                    int red = (rgb >> 16) & 0xff;
-                    int green = (rgb >> 8) & 0xff;
-                    int blue = rgb & 0xff;
+                    if (x >= i * partSize && x < (i + 1) * partSize) {
+                        int rgb = image.getRGB(x, y);
+                        int red = (rgb >> 16) & 0xff;
+                        int green = (rgb >> 8) & 0xff;
+                        int blue = rgb & 0xff;
 
-                    // Преобразование значений каждого канала в оттенки серого и подсчет частот
-                    frequencyMapRed.put(red, frequencyMapRed.getOrDefault(red, 0) + 1);
-                    frequencyMapGreen.put(green, frequencyMapGreen.getOrDefault(green, 0) + 1);
-                    frequencyMapBlue.put(blue, frequencyMapBlue.getOrDefault(blue, 0) + 1);
+                        // Преобразование значений каждого канала в оттенки серого и подсчет частот
+                        frequencyMapRed.put(red, frequencyMapRed.getOrDefault(red, 0) + 1);
+                        frequencyMapGreen.put(green, frequencyMapGreen.getOrDefault(green, 0) + 1);
+                        frequencyMapBlue.put(blue, frequencyMapBlue.getOrDefault(blue, 0) + 1);
+                    }
                 }
             }
 
@@ -130,7 +136,7 @@ public class ImageAnalysis {
         ChiSquaredDistribution chiSquaredDistribution = new ChiSquaredDistribution(128);
 
         // Вывод вероятностей для каждой части
-        for (int i = 0; i < sliderValue1; i++) {
+        for (int i = 0; i < sliderValue; i++) {
             double chiSquaredRed = chiSquaredArrayRed[i];
             double chiSquaredGreen = chiSquaredArrayGreen[i];
             double chiSquaredBlue = chiSquaredArrayBlue[i];
@@ -139,10 +145,25 @@ public class ImageAnalysis {
             double pValueGreen = 1 - chiSquaredDistribution.cumulativeProbability(chiSquaredGreen);
             double pValueBlue = 1 - chiSquaredDistribution.cumulativeProbability(chiSquaredBlue);
 
+            // Применение нормализации значений pValue
+            pValueRed = normalizePValue(pValueRed);
+            pValueGreen = normalizePValue(pValueGreen);
+            pValueBlue = normalizePValue(pValueBlue);
+
             dataList.add(new Data(i + 1, uniqueShadesArray[i], chiSquaredRed, chiSquaredGreen, chiSquaredBlue, pValueRed, pValueGreen, pValueBlue));
         }
 
         return dataList.toArray(new Data[0]);
+    }
+
+    private static double normalizePValue(double pValue) {
+        if (pValue < 0.2) {
+            return 0;
+        } else if (pValue > 0.999) {
+            return 1;
+        } else {
+            return pValue;
+        }
     }
 
     private static double computeChiSquared(HashMap<Integer, Integer> frequencyMap) {
