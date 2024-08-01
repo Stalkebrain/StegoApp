@@ -7,23 +7,22 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 
-
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1082.0" prefWidth="1716.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.stego.stego.Page4Controller">
-   <children>
-      <VBox alignment="CENTER" layoutX="175.0" layoutY="42.0" prefHeight="977.0" prefWidth="1409.0" spacing="100.0">
-         <children>
-            <BarChart prefHeight="778.0" prefWidth="1409.0" fx:id="barChar" >
-              <xAxis>
-                <CategoryAxis side="BOTTOM" />
-              </xAxis>
-              <yAxis>
-                <NumberAxis side="LEFT" />
-              </yAxis>
-            </BarChart>
-             <Button mnemonicParsing="false" text="Отрисовать" fx:id="button3"/>
-             <Button mnemonicParsing="false" text="Открыть гистограму в новом окне" fx:id="button1"/>
-             <Button mnemonicParsing="false" text="Сохранить гистограмму" fx:id="button2"/>
-         </children>
-      </VBox>
-   </children>
+<Pane prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.stego.stego.Page4Controller">
+    <children>
+        <VBox alignment="CENTER" layoutX="50.0" layoutY="20.0" prefHeight="750.0" prefWidth="1100.0" spacing="20.0">
+            <children>
+                <BarChart prefHeight="600.0" prefWidth="1100.0" fx:id="barChar" >
+                    <xAxis>
+                        <CategoryAxis side="BOTTOM" />
+                    </xAxis>
+                    <yAxis>
+                        <NumberAxis side="LEFT" />
+                    </yAxis>
+                </BarChart>
+                <Button mnemonicParsing="false" text="Отрисовать" fx:id="button3"/>
+                <Button mnemonicParsing="false" text="Открыть гистограмму в новом окне" fx:id="button1"/>
+                <Button mnemonicParsing="false" text="Сохранить гистограмму" fx:id="button2"/>
+            </children>
+        </VBox>
+    </children>
 </Pane>

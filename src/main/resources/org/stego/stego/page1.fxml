@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Rectangle?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1082.0" prefWidth="1716.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.stego.stego.Page1Controller">
+<BorderPane prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.stego.stego.Page1Controller">
    <center>
       <!-- Вложенный VBox для вертикального размещения элементов -->
       <VBox alignment="CENTER" spacing="10.0">
@@ -19,14 +19,11 @@
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="TRANSPARENT" height="514.0" stroke="BLACK" strokeWidth="2.0" width="514.0" />
             <ImageView fx:id="imageView" fitHeight="512.0" fitWidth="512.0" pickOnBounds="true" preserveRatio="true" />
          </StackPane>
-         <Button fx:id="button1" mnemonicParsing="false" onAction="#downloadImage" prefHeight="57.0" prefWidth="201.0" text="Выбрать изображение">
-            <VBox.margin>
-               <Insets top="100.0" />
-            </VBox.margin></Button>
+         <Button fx:id="button1" mnemonicParsing="false" onAction="#downloadImage" prefHeight="57.0" prefWidth="201.0" text="Выбрать изображение" />
       </VBox>
    </center>
    <bottom>
       <!-- HBox для выравнивания кнопки по горизонтали относительно ImageView -->
-      <HBox alignment="CENTER" layoutX="593.0" layoutY="838.0" spacing="10.0" />
+      <HBox alignment="CENTER" spacing="10.0" />
    </bottom>
 </BorderPane>
