@@ -19,10 +19,6 @@ public class Main extends Application {
     public static Float sladerV;
     public static ChoiceBox<String> channelV;
     public static int maxChars;
-    //public static ImageView Cock11;
-
-    //проверять переменную при загрузки компонента
-    //если не пустая,то загрузить из переменной
 
     @Override
     public void start(Stage stage) throws IOException {
