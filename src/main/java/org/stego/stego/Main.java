@@ -24,11 +24,12 @@ public class Main extends Application {
     public void start(Stage stage) throws IOException {
         Main.stage = stage;
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("mainWindow.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 1920, 1080);
+        Scene scene = new Scene(fxmlLoader.load(), 1366, 768);
         scene.getStylesheets().add(getClass().getResource("styles.css").toExternalForm());
         stage.setTitle("Test");
         stage.setScene(scene);
-        stage.setMaximized(true);
+        //stage.setMaximized(true);
+        stage.setResizable(false);
         stage.show();
     }
 

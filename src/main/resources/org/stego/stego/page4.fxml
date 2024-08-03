@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.chart.BarChart?>
 <?import javafx.scene.chart.CategoryAxis?>
 <?import javafx.scene.chart.NumberAxis?>
@@ -7,11 +8,11 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 
-<Pane prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.stego.stego.Page4Controller">
+<Pane prefHeight="768.0" prefWidth="1166.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.stego.stego.Page4Controller">
     <children>
-        <VBox alignment="CENTER" layoutX="50.0" layoutY="20.0" prefHeight="750.0" prefWidth="1100.0" spacing="20.0">
+        <VBox alignment="CENTER" layoutX="37.0" layoutY="10.0" prefHeight="750.0" prefWidth="1100.0" spacing="20.0">
             <children>
-                <BarChart prefHeight="600.0" prefWidth="1100.0" fx:id="barChar" >
+                <BarChart fx:id="barChar" prefHeight="525.0" prefWidth="1053.0">
                     <xAxis>
                         <CategoryAxis side="BOTTOM" />
                     </xAxis>
@@ -19,9 +20,16 @@
                         <NumberAxis side="LEFT" />
                     </yAxis>
                 </BarChart>
-                <Button mnemonicParsing="false" text="Отрисовать" fx:id="button3"/>
-                <Button mnemonicParsing="false" text="Открыть гистограмму в новом окне" fx:id="button1"/>
-                <Button mnemonicParsing="false" text="Сохранить гистограмму" fx:id="button2"/>
+            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="20.0">
+               <children>
+                      <Button fx:id="button3" mnemonicParsing="false" text="Отрисовать" />
+                      <Button fx:id="button1" mnemonicParsing="false" text="Открыть гистограмму в новом окне" />
+                      <Button fx:id="button2" mnemonicParsing="false" text="Сохранить гистограмму" />
+               </children>
+               <VBox.margin>
+                  <Insets top="-30.0" />
+               </VBox.margin>
+            </VBox>
             </children>
         </VBox>
     </children>

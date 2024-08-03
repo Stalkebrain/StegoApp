@@ -6,18 +6,18 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.shape.Rectangle?>
 
-<Pane prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.stego.stego.Page3Controller">
+<Pane prefHeight="768.0" prefWidth="1166.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.stego.stego.Page3Controller">
    <children>
       <!-- Рамка и изображение 1 -->
-      <StackPane layoutX="100.0" layoutY="100.0" prefHeight="400.0" prefWidth="400.0">
-         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="TRANSPARENT" height="300.0" stroke="BLACK" strokeWidth="2.0" width="300.0" />
-         <ImageView fx:id="imageView1" fitHeight="300.0" fitWidth="300.0" pickOnBounds="true" preserveRatio="true" />
+      <StackPane layoutX="139.0" layoutY="100.0" prefHeight="400.0" prefWidth="400.0">
+         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="TRANSPARENT" height="351.0" stroke="BLACK" strokeWidth="2.0" width="351.0" />
+         <ImageView fx:id="imageView1" fitHeight="350.0" fitWidth="350.0" pickOnBounds="true" preserveRatio="true" />
       </StackPane>
       <!-- Рамка и изображение 2 -->
-      <StackPane layoutX="700.0" layoutY="100.0" prefHeight="400.0" prefWidth="400.0">
-         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="TRANSPARENT" height="300.0" stroke="BLACK" strokeWidth="2.0" width="300.0" />
-         <ImageView fx:id="imageView2" fitHeight="300.0" fitWidth="300.0" pickOnBounds="true" preserveRatio="true" />
+      <StackPane layoutX="663.0" layoutY="100.0" prefHeight="400.0" prefWidth="400.0">
+         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="TRANSPARENT" height="351.0" stroke="BLACK" strokeWidth="2.0" width="351.0" />
+         <ImageView fx:id="imageView2" fitHeight="350.0" fitWidth="350.0" pickOnBounds="true" preserveRatio="true" />
       </StackPane>
-      <Button fx:id="button1" layoutX="500.0" layoutY="600.0" mnemonicParsing="false" onAction="#visualAttack" prefHeight="40.0" prefWidth="200.0" text="Визуальная атака" />
+      <Button fx:id="button1" layoutX="492.0" layoutY="599.0" mnemonicParsing="false" onAction="#visualAttack" prefHeight="40.0" prefWidth="200.0" text="Визуальная атака" />
    </children>
 </Pane>

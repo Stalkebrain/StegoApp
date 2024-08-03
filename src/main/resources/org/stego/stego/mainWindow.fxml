@@ -5,9 +5,9 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1065.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.stego.stego.MainController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1366.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.stego.stego.MainController">
    <children>
-      <VBox prefHeight="1073.0" prefWidth="200.0">
+      <VBox prefHeight="767.0" prefWidth="200.0">
          <children>
             <Button fx:id="chooseImg" mnemonicParsing="false" prefHeight="82.0" prefWidth="204.0" text="Выбор изображения" />
             <Button fx:id="addStego" mnemonicParsing="false" prefHeight="82.0" prefWidth="204.0" text="Встраивание стеговложения" />
@@ -16,11 +16,11 @@
             <Button fx:id="tableXi" mnemonicParsing="false" prefHeight="82.0" prefWidth="204.0" text="Таблица хи-квадрата" />
             <Button mnemonicParsing="false" prefHeight="82.0" prefWidth="204.0" text="Информация">
                <VBox.margin>
-                  <Insets top="570.0" />
+                  <Insets top="301.0" />
                </VBox.margin>
             </Button>
          </children>
       </VBox>
-      <Pane fx:id="paneTwo" layoutX="200.0" prefHeight="1065.0" prefWidth="1716.0" />
+      <Pane fx:id="paneTwo" layoutX="200.0" prefHeight="768.0" prefWidth="1166.0" />
    </children>
 </Pane>
