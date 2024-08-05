@@ -9,6 +9,10 @@ import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.io.StringWriter;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
 public class Main extends Application {
 
@@ -42,7 +46,22 @@ public class Main extends Application {
         stage.show();
     }
 
+    private static void logError(Exception e) {
+        try {
+            StringWriter sw = new StringWriter();
+            e.printStackTrace(new PrintWriter(sw));
+            String errorMessage = sw.toString();
+            Files.write(Paths.get("error.log"), errorMessage.getBytes());
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
+
     public static void main(String[] args) throws ClassNotFoundException {
-        launch();
+        try {
+            launch(args);
+        } catch (Exception e) {
+            logError(e);
+        }
     }
 }

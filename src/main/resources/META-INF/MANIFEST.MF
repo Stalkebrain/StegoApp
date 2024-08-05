@@ -1,0 +1,2 @@
+Manifest-Version: 1.0
+Main-Class: org.stego.stego.Main
