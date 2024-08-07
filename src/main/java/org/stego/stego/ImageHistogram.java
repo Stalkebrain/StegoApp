@@ -1,21 +1,33 @@
 package org.stego.stego;
 
-import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
 
 public class ImageHistogram {
-    public static int[] hisogramm(BufferedImage image) {
+    public enum ColorChannel {
+        RED, GREEN, BLUE
+    }
 
-        // Создание гистограммы
+    public static int[] getHistogram(BufferedImage image, ColorChannel channel) {
         int[] histogram = new int[256];
         for (int i = 0; i < image.getWidth(); i++) {
             for (int j = 0; j < image.getHeight(); j++) {
-                int brightness = new Color(image.getRGB(i, j)).getRed();
-                histogram[brightness]++;
+                Color color = new Color(image.getRGB(i, j));
+                int value;
+                switch (channel) {
+                    case RED:
+                        value = color.getRed();
+                        break;
+                    case GREEN:
+                        value = color.getGreen();
+                        break;
+                    case BLUE:
+                        value = color.getBlue();
+                        break;
+                    default:
+                        throw new IllegalArgumentException("Unsupported color channel");
+                }
+                histogram[value]++;
             }
         }
         return histogram;

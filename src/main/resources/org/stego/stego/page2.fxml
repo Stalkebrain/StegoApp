@@ -50,12 +50,18 @@
          <children>
             <!-- Рамка вокруг изображения 1 -->
             <StackPane prefHeight="302.0" prefWidth="562.0">
-               <Rectangle arcHeight="5.0" arcWidth="5.0" fill="TRANSPARENT" height="300.0" stroke="BLACK" strokeWidth="2.0" width="300.0" />
+               <Rectangle arcHeight="5.0" arcWidth="5.0" fill="TRANSPARENT" height="301.0" stroke="BLACK" strokeWidth="2.0" width="301.0">
+                  <StackPane.margin>
+                     <Insets right="1.0" />
+                  </StackPane.margin></Rectangle>
                <ImageView fx:id="imageView1" fitHeight="300.0" fitWidth="300.0" pickOnBounds="true" preserveRatio="true" />
             </StackPane>
             <!-- Рамка вокруг изображения 2 -->
             <StackPane prefHeight="300.0" prefWidth="300.0">
-               <Rectangle arcHeight="5.0" arcWidth="5.0" fill="TRANSPARENT" height="300.0" stroke="BLACK" strokeWidth="2.0" width="300.0" />
+               <Rectangle arcHeight="5.0" arcWidth="5.0" fill="TRANSPARENT" height="301.0" stroke="BLACK" strokeWidth="2.0" width="301.0">
+                  <StackPane.margin>
+                     <Insets right="1.0" />
+                  </StackPane.margin></Rectangle>
                <ImageView fx:id="imageView2" fitHeight="300.0" fitWidth="300.0" pickOnBounds="true" preserveRatio="true" />
             </StackPane>
             <Button fx:id="saveButton" mnemonicParsing="false" onAction="#saveImage" text="Сохранить изображение" />

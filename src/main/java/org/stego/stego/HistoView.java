@@ -35,11 +35,11 @@ public class HistoView {
         }
         histogramChart.getData().add(series);
         histogramChart.setLegendVisible(false); // Убираем легенду
-        histogramChart.setStyle("-fx-background-color: white;");
+        histogramChart.setStyle("-fx-background-color: #2d2d2d;");
 
         // Устанавливаем стиль для полосок
         for (XYChart.Data<String, Number> data : series.getData()) {
-            data.getNode().setStyle("-fx-bar-fill: black;");
+            data.getNode().setStyle("-fx-bar-fill: #2d2d2d;");
         }
     }
 }

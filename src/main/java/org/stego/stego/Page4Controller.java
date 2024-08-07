@@ -7,6 +7,7 @@ import javafx.scene.Scene;
 import javafx.scene.chart.BarChart;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
 import javafx.stage.Stage;
 
 import java.awt.image.BufferedImage;
@@ -16,48 +17,92 @@ import static org.stego.stego.Main.imageTwo;
 
 public class Page4Controller {
     @FXML
-    public BarChart barChar;
+    private BarChart<String, Number> barChar;
     @FXML
-    public Button button1;
+    private Button button1;
     @FXML
-    public Button button2;
+    private Button buttonDraw;
     @FXML
-    public Button button3;
+    private ChoiceBox<String> channelChoiceBox;
+
+    private BufferedImage bufferedImage;
+    private int[] histogramRed;
+    private int[] histogramGreen;
+    private int[] histogramBlue;
+    private int[] histogramChoose;
 
     @FXML
     public void initialize() throws IOException {
-        BufferedImage bufferedImage = SwingFXUtils.fromFXImage(imageTwo, null);
-        int[] histogram = ImageHistogram.hisogramm(bufferedImage);
-        showHistogramOnPane(histogram);
+        bufferedImage = SwingFXUtils.fromFXImage(imageTwo, null);
+        histogramRed = ImageHistogram.getHistogram(bufferedImage, ImageHistogram.ColorChannel.RED);
+        histogramGreen = ImageHistogram.getHistogram(bufferedImage, ImageHistogram.ColorChannel.GREEN);
+        histogramBlue = ImageHistogram.getHistogram(bufferedImage, ImageHistogram.ColorChannel.BLUE);
 
+        // Устанавливаем начальное значение в ChoiceBox
+        channelChoiceBox.setValue("Красный");
+
+        // Отрисовываем гистограмму для начального канала
+        showHistogramOnPane(histogramRed);
+        histogramChoose = histogramRed;
+
+        // Обработчик кнопки "Отрисовать"
+        buttonDraw.setOnAction(event -> {
+            String selectedChannel = channelChoiceBox.getValue();
+            switch (selectedChannel) {
+                case "Красный":
+                    showHistogramOnPane(histogramRed);
+                    histogramChoose = histogramRed;
+                    break;
+                case "Зелёный":
+                    showHistogramOnPane(histogramGreen);
+                    histogramChoose = histogramGreen;
+                    break;
+                case "Синий":
+                    showHistogramOnPane(histogramBlue);
+                    histogramChoose = histogramBlue;
+                    break;
+            }
+        });
+
+        // Обработчик кнопки "Открыть гистограмму в новом окне"
         button1.setOnAction(event -> {
-            if (histogram != null) {
+            if (histogramChoose != null) {
                 try {
-                    showHistogramWindow(histogram);
+                    showHistogramWindow(histogramChoose);
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
             }
         });
     }
+
     private void showHistogramWindow(int[] histogram) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("histogramview.fxml"));
         Stage stage = new Stage();
-
         stage.setTitle("Гистограмма");
-        stage.setWidth(800);  // Шир// ина окна
+        stage.setWidth(800);
         stage.setHeight(600);
 
         stage.setScene(new Scene(loader.load()));
         HistogramController controller = loader.getController();
         controller.displayHistogram(histogram);
         stage.show();
-
     }
 
-    private void showHistogramOnPane(int[] histogram) throws IOException {
-        HistogramController controller = new HistogramController(barChar);
-        controller.displayHistogram(histogram);
+    private void showHistogramOnPane(int[] histogram) {
+        barChar.getData().clear(); // Очищаем существующие данные
+        XYChart.Series<String, Number> series = new XYChart.Series<>();
+        for (int i = 0; i < histogram.length; i++) {
+            series.getData().add(new XYChart.Data<>(String.valueOf(i), histogram[i]));
+        }
+        barChar.getData().add(series);
+        barChar.setLegendVisible(false); // Убираем легенду
+        barChar.setStyle("-fx-background-color: #2d2d2d;");
 
+        // Устанавливаем стиль для полосок
+        for (XYChart.Data<String, Number> data : series.getData()) {
+            data.getNode().setStyle("-fx-bar-fill: black;");
+        }
     }
+
 }

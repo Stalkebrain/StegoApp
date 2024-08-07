@@ -14,7 +14,7 @@
    <children>
       <VBox alignment="CENTER" layoutX="34.0" layoutY="23.0" prefHeight="734.0" prefWidth="1105.0" spacing="10.0">
          <children>
-            <TableView fx:id="table" prefHeight="183.0" prefWidth="1426.0">
+            <TableView fx:id="table" prefHeight="250.0" prefWidth="1426.0">
                <columns>
                   <TableColumn fx:id="partColumnRed" prefWidth="75.0" text="Часть" />
                   <TableColumn fx:id="uniqueShadesColumnRed" prefWidth="75.0" text="Степень свободы" />
@@ -22,7 +22,7 @@
                   <TableColumn fx:id="pValueColumnRed" prefWidth="75.0" text="P-значение (Красный)" />
                </columns>
             </TableView>
-            <TableView fx:id="table1" prefHeight="178.0" prefWidth="1426.0">
+            <TableView fx:id="table1" prefHeight="250.0" prefWidth="1426.0">
                <columns>
                   <TableColumn fx:id="partColumnGreen" prefWidth="75.0" text="Часть" />
                   <TableColumn fx:id="uniqueShadesColumnGreen" prefWidth="75.0" text="Степень свободы" />
@@ -30,7 +30,7 @@
                   <TableColumn fx:id="pValueColumnGreen" prefWidth="75.0" text="P-значение (Зеленый)" />
                </columns>
             </TableView>
-            <TableView fx:id="table2" prefHeight="175.0" prefWidth="1426.0">
+            <TableView fx:id="table2" prefHeight="250.0" prefWidth="1426.0">
                <columns>
                   <TableColumn fx:id="partColumnBlue" prefWidth="75.0" text="Часть" />
                   <TableColumn fx:id="uniqueShadesColumnBlue" prefWidth="75.0" text="Степень свободы" />

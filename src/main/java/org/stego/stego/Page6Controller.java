@@ -36,14 +36,12 @@ public class Page6Controller {
 
         // Установка начального списка данных
         rsTable.setItems(rsDataList);
-        rsTable.setVisible(false);
         // Установка обработчика нажатия на кнопку
         rsButton.setOnAction(event -> updateTable());
     }
 
     private void updateTable() {
         // Показываем таблицу
-        rsTable.setVisible(true);
 
         // Очищаем существующие данные
         rsDataList.clear();

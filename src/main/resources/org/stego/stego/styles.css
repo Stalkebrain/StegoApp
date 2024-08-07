@@ -29,62 +29,50 @@
     -fx-opacity: 0.6;              /* Уменьшенная непрозрачность */
 }
 
-/* Основной стиль для Slider */
-.slider {
+/* Основной стиль для всех слайдеров Slider */
+Slider {
     -fx-background-color: #3a3a3a; /* Цвет фона слайдера */
-    -fx-padding: 10px;            /* Отступы внутри слайдера */
-    -fx-border-color: #2d2d2d;    /* Цвет границы */
-    -fx-border-width: 1px;        /* Ширина границы */
-    -fx-background-radius: 0px;   /* Скругление углов */
-    -fx-cursor: hand;             /* Указатель курсора при наведении */
-    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.3), 4, 0, 0, 2); /* Тень */
+    -fx-border-color: #2d2d2d;     /* Цвет границы слайдера */
+    -fx-border-width: 1px;         /* Ширина границы слайдера */
+    -fx-background-radius: 4px;    /* Скругление углов фона */
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.3), 4, 0, 0, 2); /* Тень для слайдера */
 }
 
-/* Стиль трекбара Slider (фоновая часть ползунка) */
-.slider .track {
-    -fx-background-color: #4a4a4a; /* Постоянный светлый цвет фона трека */
-    -fx-background-radius: 4px;    /* Скругление углов трека */
+/* Стиль для трека слайдера */
+Slider .track {
+    -fx-background-color: #3a3a3a; /* Цвет фона трека слайдера */
+    -fx-border-color: #2d2d2d;     /* Цвет границы трека слайдера */
+    -fx-border-width: 1px;         /* Ширина границы трека слайдера */
+    -fx-background-radius: 4px;    /* Скругление углов фона трека */
 }
 
-/* Стиль трекбара Slider при наведении */
-.slider .track:hover {
-    -fx-background-color: #4a4a4a; /* Тот же светлый цвет фона при наведении */
+/* Стиль для заполненной части трека слайдера */
+Slider .track .fill {
+    -fx-background-color: #ffffff; /* Цвет заполненной части трека */
+    -fx-background-radius: 4px;    /* Скругление углов заполненной части трека */
 }
 
-/* Стиль ползунка (thumb) Slider */
-.slider .thumb {
-    -fx-background-color: #b0b0b0; /* Светлый цвет фона ползунка */
-    -fx-background-radius: 50%;    /* Полностью круглый ползунок */
-    -fx-border-color: #8c8c8c;     /* Цвет границы ползунка */
-    -fx-border-width: 1px;         /* Ширина границы ползунка */
-    -fx-min-width: 20px;           /* Минимальная ширина ползунка */
-    -fx-min-height: 20px;          /* Минимальная высота ползунка */
-    -fx-padding: 5px;              /* Отступы внутри ползунка */
+/* Стиль для ползунка слайдера */
+Slider .thumb {
+    -fx-background-color: #4a4a4a; /* Цвет фона ползунка */
+    -fx-border-color: #4a4a4a;     /* Цвет границы ползунка */
+    -fx-border-width: 0px;         /* Ширина границы ползунка */
+    -fx-background-radius: 50%;    /* Скругление углов фона ползунка */
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.3), 4, 0, 0, 2); /* Тень для ползунка */
 }
 
-/* Стиль ползунка Slider при наведении */
-.slider .thumb:hover {
-    -fx-background-color: #d0d0d0; /* Более светлый цвет фона ползунка при наведении */
+/* Стиль ползунка при наведении */
+Slider .thumb:hover {
+    -fx-background-color: #4a4a4a; /* Светлее цвет фона при наведении */
 }
 
-/* Стиль ползунка Slider при нажатии */
-.slider .thumb:pressed {
-    -fx-background-color: #a0a0a0; /* Средне-светлый цвет фона ползунка при нажатии */
+/* Стиль ползунка при нажатии */
+Slider .thumb:pressed {
+    -fx-background-color: #4a4a4a; /* Ещё темнее цвет фона при нажатии */
 }
 
-/* Стиль ползунка Slider в неактивном состоянии */
-.slider:disabled {
-    -fx-background-color: #2d2d2d; /* Цвет фона слайдера, когда он неактивен */
-}
-
-/* Стиль трекбара Slider в неактивном состоянии */
-.slider:disabled .track {
-    -fx-background-color: #2d2d2d; /* Цвет фона трека в неактивном состоянии */
-}
-
-/* Стиль ползунка Slider в неактивном состоянии */
-.slider:disabled .thumb {
-    -fx-background-color: #999999; /* Цвет фона ползунка в неактивном состоянии */
+/* Стиль слайдера в неактивном состоянии */
+Slider:disabled {
     -fx-opacity: 0.6;              /* Уменьшенная непрозрачность */
 }
 
@@ -101,9 +89,9 @@
     -fx-cursor: hand;             /* Указатель курсора при наведении */
     -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.3), 4, 0, 0, 2); /* Тень */
     -fx-wrap-text: true;          /* Перенос текста */
-    -fx-alignment: center;        /* Выравнивание текста */
+    -fx-alignment: CENTER;        /* Выравнивание текста по центру */
+    -fx-content-display: CENTER;  /* Центрирование содержимого */
     -fx-max-width: 200px;         /* Максимальная ширина (можно настроить) */
-    -fx-text-alignment: center;   /* Центрирование текста */
 }
 
 /* Стиль выпадающего списка (Popup) ChoiceBox */
@@ -130,7 +118,9 @@
     -fx-text-fill: #999999;        /* Цвет текста неактивного элемента */
     -fx-opacity: 0.6;              /* Уменьшенная непрозрачность */
 }
-
+#choice-box-popup-menu {
+        -fx-background-color: #2d2d2d;
+}
 
 /* Основной стиль для всех кнопок Button */
 Button {
