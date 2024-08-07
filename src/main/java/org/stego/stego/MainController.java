@@ -22,6 +22,8 @@ public class MainController {
     private Button showHistogram;
     @FXML
     private Button tableXi;
+    @FXML
+    private Button rsMetod;
 
     FXMLLoader loader;
 
@@ -66,6 +68,15 @@ public class MainController {
         tableXi.setOnAction(event -> {
             paneTwo.getChildren().clear();
             loader = new FXMLLoader(getClass().getResource("page5.fxml"));
+            try {
+                paneTwo.getChildren().add(loader.load());
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
+        rsMetod.setOnAction(event -> {
+            paneTwo.getChildren().clear();
+            loader = new FXMLLoader(getClass().getResource("page6.fxml"));
             try {
                 paneTwo.getChildren().add(loader.load());
             } catch (IOException e) {

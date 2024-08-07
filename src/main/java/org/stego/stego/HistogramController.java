@@ -35,8 +35,13 @@ public class HistogramController {
             series.getData().add(data);
         }
         histogramChart.getData().add(series);
-        histogramChart.setStyle("-fx-background-color: white;");
+        histogramChart.setStyle("-fx-background-color: #2d2d2d;"); // Цвет фона гистограммы
         histogramChart.setLegendVisible(false); // Убираем легенду
+
+        // Изменяем цвет баров
+        for (XYChart.Data<String, Number> data : series.getData()) {
+            data.getNode().setStyle("-fx-bar-fill: white;");
+        }
 
         // Устанавливаем стиль для полосок
         for (XYChart.Data<String, Number> data : series.getData()) {

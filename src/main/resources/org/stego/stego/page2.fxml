@@ -28,7 +28,7 @@
                   <Insets top="10.0" />
                </VBox.margin>
             </TextField>
-            <ChoiceBox fx:id="channelChoiceBox" prefWidth="150.0">
+            <ChoiceBox fx:id="channelChoiceBox" prefWidth="150.0" styleClass="choice-box">
                <VBox.margin>
                   <Insets bottom="10.0" top="10.0" />
                </VBox.margin>

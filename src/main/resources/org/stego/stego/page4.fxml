@@ -12,7 +12,7 @@
     <children>
         <VBox alignment="CENTER" layoutX="37.0" layoutY="10.0" prefHeight="750.0" prefWidth="1100.0" spacing="20.0">
             <children>
-                <BarChart fx:id="barChar" prefHeight="525.0" prefWidth="1053.0">
+                <BarChart fx:id="barChar" prefHeight="525.0" prefWidth="1053.0" styleClass="bar-chart">
                     <xAxis>
                         <CategoryAxis side="BOTTOM" />
                     </xAxis>

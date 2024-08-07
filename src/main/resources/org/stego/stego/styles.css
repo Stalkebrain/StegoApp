@@ -1,7 +1,182 @@
+/* Основной стиль для CheckBox */
+.check-box {
+    -fx-background-color: #3a3a3a; /* Цвет фона CheckBox */
+    -fx-text-fill: #ffffff;        /* Цвет текста CheckBox */
+    -fx-border-color: #2d2d2d;    /* Цвет границы CheckBox */
+    -fx-border-width: 1px;        /* Ширина границы CheckBox */
+    -fx-padding: 5px;             /* Отступы внутри CheckBox */
+    -fx-font-size: 14px;          /* Размер шрифта */
+    -fx-font-family: Arial, sans-serif; /* Шрифт */
+    -fx-background-radius: 4px;   /* Скругление углов фона */
+    -fx-cursor: hand;             /* Указатель курсора при наведении */
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.3), 4, 0, 0, 2); /* Тень */
+}
+
+/* Стиль CheckBox при наведении */
+.check-box:hover {
+    -fx-background-color: #4a4a4a; /* Светлее цвет фона при наведении */
+}
+
+/* Стиль CheckBox при нажатии */
+.check-box:pressed {
+    -fx-background-color: #333333; /* Еще темнее цвет фона при нажатии */
+}
+
+/* Стиль CheckBox в неактивном состоянии */
+.check-box:disabled {
+    -fx-background-color: #2d2d2d; /* Цвет фона CheckBox, когда он неактивен */
+    -fx-text-fill: #999999;        /* Цвет текста CheckBox в неактивном состоянии */
+    -fx-opacity: 0.6;              /* Уменьшенная непрозрачность */
+}
+
+/* Основной стиль для Slider */
+.slider {
+    -fx-background-color: #3a3a3a; /* Цвет фона слайдера */
+    -fx-padding: 10px;            /* Отступы внутри слайдера */
+    -fx-border-color: #2d2d2d;    /* Цвет границы */
+    -fx-border-width: 1px;        /* Ширина границы */
+    -fx-background-radius: 0px;   /* Скругление углов */
+    -fx-cursor: hand;             /* Указатель курсора при наведении */
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.3), 4, 0, 0, 2); /* Тень */
+}
+
+/* Стиль трекбара Slider (фоновая часть ползунка) */
+.slider .track {
+    -fx-background-color: #4a4a4a; /* Постоянный светлый цвет фона трека */
+    -fx-background-radius: 4px;    /* Скругление углов трека */
+}
+
+/* Стиль трекбара Slider при наведении */
+.slider .track:hover {
+    -fx-background-color: #4a4a4a; /* Тот же светлый цвет фона при наведении */
+}
+
+/* Стиль ползунка (thumb) Slider */
+.slider .thumb {
+    -fx-background-color: #b0b0b0; /* Светлый цвет фона ползунка */
+    -fx-background-radius: 50%;    /* Полностью круглый ползунок */
+    -fx-border-color: #8c8c8c;     /* Цвет границы ползунка */
+    -fx-border-width: 1px;         /* Ширина границы ползунка */
+    -fx-min-width: 20px;           /* Минимальная ширина ползунка */
+    -fx-min-height: 20px;          /* Минимальная высота ползунка */
+    -fx-padding: 5px;              /* Отступы внутри ползунка */
+}
+
+/* Стиль ползунка Slider при наведении */
+.slider .thumb:hover {
+    -fx-background-color: #d0d0d0; /* Более светлый цвет фона ползунка при наведении */
+}
+
+/* Стиль ползунка Slider при нажатии */
+.slider .thumb:pressed {
+    -fx-background-color: #a0a0a0; /* Средне-светлый цвет фона ползунка при нажатии */
+}
+
+/* Стиль ползунка Slider в неактивном состоянии */
+.slider:disabled {
+    -fx-background-color: #2d2d2d; /* Цвет фона слайдера, когда он неактивен */
+}
+
+/* Стиль трекбара Slider в неактивном состоянии */
+.slider:disabled .track {
+    -fx-background-color: #2d2d2d; /* Цвет фона трека в неактивном состоянии */
+}
+
+/* Стиль ползунка Slider в неактивном состоянии */
+.slider:disabled .thumb {
+    -fx-background-color: #999999; /* Цвет фона ползунка в неактивном состоянии */
+    -fx-opacity: 0.6;              /* Уменьшенная непрозрачность */
+}
+
+/* Основной стиль для ChoiceBox */
+.choice-box {
+    -fx-background-color: #3a3a3a; /* Цвет фона */
+    -fx-text-fill: #ffffff;        /* Цвет текста */
+    -fx-border-color: #2d2d2d;    /* Цвет границы */
+    -fx-border-width: 1px;        /* Ширина границы */
+    -fx-padding: 10px;            /* Отступы внутри */
+    -fx-font-size: 14px;          /* Размер шрифта */
+    -fx-font-family: Arial, sans-serif; /* Шрифт */
+    -fx-background-radius: 4px;   /* Скругление углов */
+    -fx-cursor: hand;             /* Указатель курсора при наведении */
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.3), 4, 0, 0, 2); /* Тень */
+    -fx-wrap-text: true;          /* Перенос текста */
+    -fx-alignment: center;        /* Выравнивание текста */
+    -fx-max-width: 200px;         /* Максимальная ширина (можно настроить) */
+    -fx-text-alignment: center;   /* Центрирование текста */
+}
+
+/* Стиль выпадающего списка (Popup) ChoiceBox */
+.choice-box .list-cell {
+    -fx-background-color: #3a3a3a; /* Цвет фона элемента */
+    -fx-text-fill: #ffffff;        /* Цвет текста элемента */
+    -fx-border-color: #2d2d2d;    /* Цвет границы элемента */
+    -fx-border-width: 1px;        /* Ширина границы элемента */
+}
+
+/* Стиль элемента выпадающего списка при наведении */
+.choice-box .list-cell:hover {
+    -fx-background-color: #4a4a4a; /* Цвет фона при наведении */
+}
+
+/* Стиль элемента выпадающего списка при выборе */
+.choice-box .list-cell:selected {
+    -fx-background-color: #333333; /* Цвет фона при выборе */
+}
+
+/* Стиль элемента выпадающего списка в неактивном состоянии */
+.choice-box .list-cell:disabled {
+    -fx-background-color: #2d2d2d; /* Цвет фона неактивного элемента */
+    -fx-text-fill: #999999;        /* Цвет текста неактивного элемента */
+    -fx-opacity: 0.6;              /* Уменьшенная непрозрачность */
+}
+
+
+/* Основной стиль для всех кнопок Button */
+Button {
+    -fx-background-color: #3a3a3a; /* Цвет фона кнопки */
+    -fx-text-fill: #ffffff;        /* Цвет текста кнопки */
+    -fx-border-color: #2d2d2d;    /* Цвет границы кнопки */
+    -fx-border-width: 1px;        /* Ширина границы кнопки */
+    -fx-padding: 10px;            /* Отступы внутри кнопки */
+    -fx-font-size: 14px;          /* Размер шрифта */
+    -fx-font-family: Arial, sans-serif; /* Шрифт */
+    -fx-background-radius: 4px;   /* Скругление углов фона */
+    -fx-cursor: hand;             /* Указатель курсора при наведении */
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.3), 4, 0, 0, 2); /* Тень для кнопки */
+    -fx-wrap-text: true;          /* Разрешает перенос текста */
+    -fx-alignment: center;        /* Выравнивание текста по центру */
+    -fx-max-width: 200px;         /* Максимальная ширина кнопки (можно настроить) */
+    -fx-text-alignment: center;   /* Центрирование текста внутри кнопки */
+}
+
+/* Стиль кнопки при наведении */
+Button:hover {
+    -fx-background-color: #4a4a4a; /* Светлее цвет фона при наведении */
+}
+
+/* Стиль кнопки при нажатии */
+Button:pressed {
+    -fx-background-color: #333333; /* Ещё темнее цвет фона при нажатии */
+}
+
+/* Стиль кнопки в неактивном состоянии */
+Button:disabled {
+    -fx-background-color: #2d2d2d; /* Цвет фона кнопки, когда она неактивна */
+    -fx-text-fill: #999999;        /* Цвет текста кнопки в неактивном состоянии */
+    -fx-opacity: 0.6;              /* Уменьшенная непрозрачность */
+}
+
 .TextArea1{
 -fx-wrap-text:true;
 
 }
+
+.rsTable .scroll-bar:horizontal {
+    -fx-pref-height: 0;  /* Скрывает горизонтальный скроллер */
+    -fx-opacity: 0;      /* Устанавливает прозрачность, чтобы скрыть скроллер */
+}
+
 .label{
     -fx-text-fill: white;
 }
