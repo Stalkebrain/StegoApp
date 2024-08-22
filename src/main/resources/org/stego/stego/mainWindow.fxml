@@ -15,7 +15,7 @@
             <Button fx:id="showHistogram" mnemonicParsing="false" prefHeight="90.0" prefWidth="204.0" text="Гистограмма" />
             <Button fx:id="tableXi" mnemonicParsing="false" prefHeight="90.0" prefWidth="204.0" text="Таблица хи-квадрата" />
             <Button fx:id="rsMetod" mnemonicParsing="false" prefHeight="90.0" prefWidth="204.0" text="Другие методы обнаружения" />
-            <Button mnemonicParsing="false" prefHeight="82.0" prefWidth="204.0" text="Информация">
+            <Button fx:id="inform" mnemonicParsing="false" prefHeight="82.0" prefWidth="204.0" text="Информация">
                <VBox.margin>
                   <Insets top="300.0" />
                </VBox.margin>

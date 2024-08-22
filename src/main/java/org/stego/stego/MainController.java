@@ -9,6 +9,8 @@ import javafx.scene.shape.Rectangle;
 
 import java.io.IOException;
 
+import static org.stego.stego.Main.imageTwo;
+
 public class MainController {
     @FXML
     public Pane paneTwo;
@@ -24,6 +26,8 @@ public class MainController {
     private Button tableXi;
     @FXML
     private Button rsMetod;
+    @FXML
+    private Button inform;
 
     FXMLLoader loader;
 
@@ -76,7 +80,18 @@ public class MainController {
         });
         rsMetod.setOnAction(event -> {
             paneTwo.getChildren().clear();
-            loader = new FXMLLoader(getClass().getResource("page6.fxml"));
+            if(imageTwo != null) {
+                loader = new FXMLLoader(getClass().getResource("page6.fxml"));
+            }
+            try {
+                paneTwo.getChildren().add(loader.load());
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
+        inform.setOnAction(event -> {
+            paneTwo.getChildren().clear();
+            loader = new FXMLLoader(getClass().getResource("page7.fxml"));
             try {
                 paneTwo.getChildren().add(loader.load());
             } catch (IOException e) {
