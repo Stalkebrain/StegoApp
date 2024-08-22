@@ -6,7 +6,6 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1166.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Label layoutX="269.0" layoutY="21.0" text="Нахождение стеговложений в графических файлах." textAlignment="CENTER">
@@ -22,6 +21,11 @@
       <Label layoutX="929.0" layoutY="716.0" text="© Тарасов Егор, 2024 г.">
          <font>
             <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="310.0" layoutY="292.0" text="Информация будет дополняться">
+         <font>
+            <Font size="39.0" />
          </font>
       </Label>
    </children>

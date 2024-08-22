@@ -37,7 +37,7 @@
                                 </FXCollections>
                             </items>
                         </ChoiceBox>
-                        <Button fx:id="buttonDraw" mnemonicParsing="false" text="Отрисовать" />
+                        <Button fx:id="buttonDraw" mnemonicParsing="false" text="Отрисовать гистограмму" />
                         <Button fx:id="button1" mnemonicParsing="false" text="Открыть гистограмму в новом окне" />
                     </children>
                     <VBox.margin>

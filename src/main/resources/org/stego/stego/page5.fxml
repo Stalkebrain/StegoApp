@@ -46,7 +46,7 @@
                   <CheckBox fx:id="syncCheckBox" contentDisplay="TOP" mnemonicParsing="false" selected="true" text="Одно значение слайдеров (по первому)" />
                </children>
             </HBox>
-            <Button fx:id="button" mnemonicParsing="false" text="Рассчитать">
+            <Button fx:id="button" mnemonicParsing="false" text="Рассчитать хи-квадрат">
                <VBox.margin>
                   <Insets bottom="30.0" />
                </VBox.margin>
