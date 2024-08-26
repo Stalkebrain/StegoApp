@@ -11,6 +11,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.StringWriter;
+import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
@@ -27,6 +28,10 @@ public class Main extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         Main.stage = stage;
+
+        Image icon = new Image(getClass().getResourceAsStream("картинки/icon.png"));
+        stage.getIcons().add(icon);
+
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("mainWindow.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 1366, 768);
         scene.getStylesheets().add(getClass().getResource("styles.css").toExternalForm());
