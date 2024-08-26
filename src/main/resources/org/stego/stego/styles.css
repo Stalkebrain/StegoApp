@@ -1,3 +1,8 @@
+.vbox {
+    -fx-background-color: #2a2a2a; /* Фон чуть темнее чем #2d2d2d */
+    -fx-border-color: black; /* Черная рамка */
+    -fx-border-width: 1px; /* Толщина рамки 1 пиксель */
+}
 .vbox-custom {
     -fx-background-color: #333333;
     -fx-border-color: white;

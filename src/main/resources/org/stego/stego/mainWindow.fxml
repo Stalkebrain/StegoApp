@@ -7,7 +7,7 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1366.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.stego.stego.MainController">
    <children>
-      <VBox prefHeight="767.0" prefWidth="200.0">
+      <VBox prefHeight="767.0" prefWidth="200.0" styleClass="vbox">
          <children>
             <Button fx:id="chooseImg" mnemonicParsing="false" prefHeight="90.0" prefWidth="204.0" text="Выбор изображения" />
             <Button fx:id="addStego" mnemonicParsing="false" prefHeight="90.0" prefWidth="204.0" text="Встраивание стеговложения" />
